@@ -3,6 +3,7 @@
 
 #include "cocos2d.h"
 #include "PopStarCore.h"
+#include "LayoutEngine.h"
 
 class HelloWorld : public cocos2d::Layer
 {
@@ -15,6 +16,13 @@ public:
 
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
+    
+    MatrixManager* manager= new MatrixManager();
+    
+    LayoutEngine* engine = new LayoutEngine();
+    
+    void touchPoint(Point point);
+    
 };
 
 #endif // __HELLOWORLD_SCENE_H__

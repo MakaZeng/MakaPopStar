@@ -120,6 +120,7 @@
 		1D6058910D05DD3D006BFB54 /* MakaPopStar-mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MakaPopStar-mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		24B8F9231C57210400D103F3 /* PopStarCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopStarCore.h; sourceTree = "<group>"; };
+		24B8F9241C57583400D103F3 /* LayoutEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayoutEngine.h; sourceTree = "<group>"; };
 		27DB44E691E0860009A2F945 /* CocosRuntimeDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CocosRuntimeDelegate.h; path = protocols/include/CocosRuntimeDelegate.h; sourceTree = SOURCE_ROOT; };
 		287D4D358FEDC2E14C189416 /* RECWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RECWrapper.h; path = protocols/include/RECWrapper.h; sourceTree = SOURCE_ROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -309,6 +310,7 @@
 		24B8F9221C5720E900D103F3 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				24B8F9241C57583400D103F3 /* LayoutEngine.h */,
 				24B8F9231C57210400D103F3 /* PopStarCore.h */,
 			);
 			path = Core;

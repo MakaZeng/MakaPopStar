@@ -28,21 +28,21 @@ class MatrixManager : public Ref {
     
 public:
     
-    int typeCount;
-    int lineCount;
-    int rowCount;
+    int typeCount = 5;
+    int lineCount = 10;
+    int rowCount = 10;
     
     Node* starContainer;
     
     CCArray* dataSource;
     
-    Vector<StarModel *> * checkedBlocks;
-    Vector<StarModel *> * blocksInSameColor;
+    CCArray* checkedBlocks;
+    CCArray* blocksInSameColor;
     
 public:
     
     //获取点击ref周边相同颜色的ref
-    Vector<StarModel *> * getSameColorStarsWithStar(StarModel * model)
+    CCArray* getSameColorStarsWithStar(StarModel * model)
     {
         if (model == NULL) {
             return NULL;
@@ -93,19 +93,19 @@ public:
             for (int j = 0; j<((CCArray*)dataSource->objectAtIndex(i))->count(); j++) {
                 StarModel* model = (StarModel*)((CCArray*)dataSource->objectAtIndex(i))->objectAtIndex(j);
                 StarModel* blockUpside = this->getModelForLineAndRow(model->line+1, model->row);
-                if (blockUpside != NULL && blockUpside->type == model->type) {
+                if (blockUpside ==NULL && blockUpside->type == model->type) {
                     return false;
                 }
                 StarModel* blockDownside = this->getModelForLineAndRow(model->line-1, model->row);;
-                if (blockDownside != NULL && blockDownside->type == model->type) {
+                if (blockDownside ==NULL && blockDownside->type == model->type) {
                     return false;
                 }
                 StarModel* blockLeftside = this->getModelForLineAndRow(model->line, model->row-1);
-                if (blockLeftside != NULL && blockLeftside->type == model->type) {
+                if (blockLeftside ==NULL && blockLeftside->type == model->type) {
                     return false;
                 }
                 StarModel* blockRightside = this->getModelForLineAndRow(model->line, model->row+1);
-                if (blockRightside != NULL && blockRightside->type == model->type) {
+                if (blockRightside ==NULL && blockRightside->type == model->type) {
                     return false;
                 }
             }
@@ -117,6 +117,11 @@ public:
     void initStars()
     {
         dataSource = CCArray::create();
+        blocksInSameColor = CCArray::create();
+        checkedBlocks = CCArray::create();
+        dataSource->retain();
+        blocksInSameColor->retain();
+        checkedBlocks->retain();
         for (int i = 0; i<lineCount; i++) {
             CCArray* lineArray = CCArray::create();
             dataSource->addObject(lineArray);
@@ -134,10 +139,10 @@ public:
     //判断上下左右
     void checkFourSides(StarModel* model)
     {
-        if (checkedBlocks->contains(model)) {
+        if (checkedBlocks->containsObject(model)) {
             return;
         }else {
-            checkedBlocks->pushBack(model);
+            checkedBlocks->addObject(model);
         }
         checkUp(model);
         checkDown(model);
@@ -147,37 +152,37 @@ public:
     
     void checkUp(StarModel* model) {
         StarModel* blockUpside = getModelForLineAndRow(model->line+1, model->row);
-        if (blockUpside !=NULL || blockUpside->type != model->type) {
+        if (blockUpside ==NULL || blockUpside->type != model->type) {
             return;
         }
-        blocksInSameColor->pushBack(blockUpside);
+        blocksInSameColor->addObject(blockUpside);
         this->checkFourSides(blockUpside);
     }
     
     void checkDown(StarModel* model){
         StarModel* blockDownside = getModelForLineAndRow(model->line-1, model->row);
-        if (blockDownside !=NULL || blockDownside->type != model->type) {
+        if (blockDownside ==NULL || blockDownside->type != model->type) {
             return;
         }
-        blocksInSameColor->pushBack(blockDownside);
+        blocksInSameColor->addObject(blockDownside);
         this->checkFourSides(blockDownside);
     }
     
     void checkLeft(StarModel* model){
         StarModel* blockLeftside = getModelForLineAndRow(model->line, model->row-1);
-        if (blockLeftside !=NULL || blockLeftside->type != model->type) {
+        if (blockLeftside ==NULL || blockLeftside->type != model->type) {
             return;
         }
-        blocksInSameColor->pushBack(blockLeftside);
+        blocksInSameColor->addObject(blockLeftside);
         this->checkFourSides(blockLeftside);
     }
     
     void checkRight(StarModel* model){
         StarModel* blockRightside = getModelForLineAndRow(model->line, model->row+1);
-        if (blockRightside !=NULL || blockRightside->type != model->type) {
+        if (blockRightside ==NULL || blockRightside->type != model->type) {
             return;
         }
-        blocksInSameColor->pushBack(blockRightside);
+        blocksInSameColor->addObject(blockRightside);
         this->checkFourSides(blockRightside);
     }
 
