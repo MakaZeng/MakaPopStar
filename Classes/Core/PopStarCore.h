@@ -96,19 +96,19 @@ public:
             for (int j = 0; j<((CCArray*)dataSource->objectAtIndex(i))->count(); j++) {
                 StarModel* model = (StarModel*)((CCArray*)dataSource->objectAtIndex(i))->objectAtIndex(j);
                 StarModel* blockUpside = this->getModelForLineAndRow(model->line+1, model->row);
-                if (blockUpside ==NULL && blockUpside->type == model->type) {
+                if (blockUpside !=NULL && blockUpside->type == model->type) {
                     return false;
                 }
                 StarModel* blockDownside = this->getModelForLineAndRow(model->line-1, model->row);;
-                if (blockDownside ==NULL && blockDownside->type == model->type) {
+                if (blockDownside !=NULL && blockDownside->type == model->type) {
                     return false;
                 }
                 StarModel* blockLeftside = this->getModelForLineAndRow(model->line, model->row-1);
-                if (blockLeftside ==NULL && blockLeftside->type == model->type) {
+                if (blockLeftside !=NULL && blockLeftside->type == model->type) {
                     return false;
                 }
                 StarModel* blockRightside = this->getModelForLineAndRow(model->line, model->row+1);
-                if (blockRightside ==NULL && blockRightside->type == model->type) {
+                if (blockRightside !=NULL && blockRightside->type == model->type) {
                     return false;
                 }
             }

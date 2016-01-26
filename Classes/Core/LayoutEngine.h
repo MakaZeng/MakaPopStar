@@ -78,7 +78,10 @@ public:
                 texture->initWithImage(image);
                 CCSprite* bSprite = CCSprite::createWithTexture(texture);
                 
-                bSprite->setPosition(ccp((i+ 0.5)*this->perHeight, (j+0.5)*this->perWidth));
+                bSprite->setPosition(ccp((i+ 0.5)*this->perHeight, (j+0.5)*this->perWidth + Director::sharedDirector()->getVisibleSize().height));
+                
+                CCActionInterval * moveBy = CCMoveBy::create(1+i*.1+j*.1,Vec2(0, 0 - Director::sharedDirector()->getVisibleSize().height));
+                bSprite->runAction(moveBy);
                 
                 model->line = i;
                 model->row = j;

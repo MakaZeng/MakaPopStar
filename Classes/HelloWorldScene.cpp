@@ -73,7 +73,7 @@ bool HelloWorld::init()
     addChild(backImage);
     
     containerLayer = Layer::create();
-    containerLayer->setPosition(0, 20);
+    containerLayer->setPosition(0, 80);
     Size containerSize = containerLayer->getContentSize();
     auto containerBody = PhysicsBody::createEdgeBox(containerSize,PHYSICSBODY_MATERIAL_DEFAULT,3);
     auto containerEdgeNode = Node::create();
@@ -113,15 +113,19 @@ bool HelloWorld::init()
         // 点击事件结束处理
         listener1->onTouchEnded = [](Touch* touch, Event* event){};
         _eventDispatcher->addEventListenerWithSceneGraphPriority(listener1, containerLayer);
-
     }
-    
 
     return true;
 }
 
 void HelloWorld::touchPoint(Point point)
 {
+    static bool lock = false;
+    
+    if (lock) {
+        return;
+    }
+    lock = true;
     Point modelPoint = engine->getClickStarModelPointWith(point);
     StarModel* model = manager->getModelForLineAndRow(modelPoint.x, modelPoint.y);
     if (model!=NULL) {
@@ -138,5 +142,14 @@ void HelloWorld::touchPoint(Point point)
         engine->removeStars(list);
         engine->relayout(manager->dataSource);
     }
+    
+    if (manager->checkDeath()) {
+        manager->initStars();
+        engine->layoutStarsWithDataSourceAndLayer(manager->dataSource, containerLayer);
+    }
+    
+    scheduleOnce([](float){
+        lock = false;
+    }, 0.5, "key");
 }
 
