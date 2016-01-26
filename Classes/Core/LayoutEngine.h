@@ -21,6 +21,8 @@ public:
     
     Sprite* sprite;
     
+    Point targetCenter;
+    
 public:
     
 };
@@ -32,24 +34,13 @@ public:
     float perWidth;
     float perHeight;
     CCArray* allNodes;
+    Layer* cacheLayer;
     
 public:
     
     void layoutStarsWithDataSourceAndLayer(CCArray* dataSource , Layer* layer)
     {
-        
-        CCArray* emptyArray = CCArray::create();
-        
-        for (int i = 0; i<dataSource->count(); i++) {
-            CCArray* arr = (CCArray*)dataSource->objectAtIndex(i);
-            
-            if (arr->count() == 0) {
-                emptyArray->addObject(arr);
-            }
-        }
-        
-        dataSource->removeObjectsInArray(emptyArray);
-        
+        cacheLayer = layer;
         
         layer->removeAllChildren();
         
@@ -63,11 +54,11 @@ public:
         
         CCArray* nameArray = CCArray::create();
         
-        String* blue = String::create("blue.png");
-        String* green = String::create("green.png");
-        String* orange = String::create("orange.png");
-        String* purple = String::create("purple.png");
-        String* red = String::create("red.png");
+        String* blue = String::create("image_00.png");
+        String* green = String::create("image_01.png");
+        String* orange = String::create("image_02.png");
+        String* purple = String::create("image_03.png");
+        String* red = String::create("image_04.png");
         
         nameArray->addObject(blue);
         nameArray->addObject(green);
@@ -92,13 +83,17 @@ public:
                 model->line = i;
                 model->row = j;
                 
-                bSprite->setScale(2, 2);
+                bSprite->setScale(.4,.4);
                 
+//                auto body = PhysicsBody::createBox(Size(bSprite->getContentSize().width+5, bSprite->getContentSize().height+5));
+//                bSprite->setPhysicsBody(body);
+//                
                 layer->addChild(bSprite);
                 
                 StarNode* node = new StarNode();
                 node->sprite = bSprite;
                 node->model = model;
+                node->targetCenter = bSprite->getPosition();
                 
                 allNodes->addObject(node);
             }
@@ -124,6 +119,81 @@ public:
             }
         }
         return NULL;
+    }
+    
+    StarNode* getNodeForModel(StarModel* model)
+    {
+        for(int i = 0 ; i < allNodes->count() ; i ++)
+        {
+            StarNode* n = (StarNode*)allNodes->objectAtIndex(i);
+            if (n->model == model) {
+                return n;
+            }
+        }
+        return NULL;
+    }
+    
+    void removeNodeForModel(StarModel* model)
+    {
+        for(int i = 0 ; i < allNodes->count() ; i ++)
+        {
+            StarNode* n = (StarNode*)allNodes->objectAtIndex(i);
+            if (n->model == model) {
+                allNodes->removeObject(n);
+                return;
+            }
+        }
+    }
+    
+    void removeStars(CCArray* stars)
+    {
+        for(int i = 0 ; i < stars->count() ; i ++)
+        {
+            StarModel* model = (StarModel*)stars->objectAtIndex(i);
+            
+            Sprite* sp = getRelatedSpriteWith(model);
+            
+            removeNodeForModel(model);
+            
+            cacheLayer->removeChild(sp);
+        }
+    }
+    
+    void relayout(CCArray* dataSource)
+    {
+        CCArray* emptyArray = CCArray::create();
+        
+        for (int i = 0; i<dataSource->count(); i++) {
+            CCArray* arr = (CCArray*)dataSource->objectAtIndex(i);
+            
+            if (arr->count() == 0) {
+                emptyArray->addObject(arr);
+            }
+        }
+        
+        dataSource->removeObjectsInArray(emptyArray);
+        
+        for (int i = 0; i<dataSource->count(); i++) {
+            for (int j = 0; j<((CCArray*)dataSource->objectAtIndex(i))->count(); j++) {
+                StarModel* model = (StarModel*)((CCArray*)dataSource->objectAtIndex(i))->objectAtIndex(j);
+                
+                model->line = i;
+                model->row = j;
+                
+                StarNode* node = getNodeForModel(model);
+                
+                Point p = node->sprite->getPosition();
+                Point t = ccp((i+ 0.5)*this->perHeight, (j+0.5)*this->perWidth);
+                
+                if (p.x != t.x || p.y != t.y) {
+                    CCActionInterval * moveBy = CCMoveBy::create(0.3,Vec2(t.x-p.x, t.y-p.y));
+                    CCActionInterval * actionmoveback= moveBy;
+                    node->sprite->runAction(actionmoveback);
+                    allNodes->addObject(node);
+                }
+                
+            }
+        }
     }
     
 };

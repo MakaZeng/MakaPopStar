@@ -10,7 +10,9 @@ Scene* HelloWorld::createScene()
 {
     
     // 'scene' is an autorelease object
-    auto scene = Scene::create();
+    auto scene = Scene::createWithPhysics();
+    scene->getPhysicsWorld()->setGravity(Vec2(0, 0));
+//    scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
     
     // 'layer' is an autorelease object
     auto layer = HelloWorld::create();
@@ -30,17 +32,27 @@ bool HelloWorld::init()
         return false;
     }
     
-//    auto rootNode = CSLoader::createNode("MainScene.csb");
-
-//    addChild(rootNode);
-    
     Size visibleSize = Director::getInstance()->getVisibleSize();
+    
+    auto body = PhysicsBody::createEdgeBox(visibleSize,PHYSICSBODY_MATERIAL_DEFAULT,3);
+    auto edgeNode = Node::create();
+    edgeNode->setPosition(Point(visibleSize.width/2,visibleSize.height/2));
+    edgeNode->setPhysicsBody(body);
+    addChild(edgeNode);
+    
     
     auto backLayer = LayerColor::create(Color4B::WHITE, visibleSize.width, visibleSize.height);
     addChild(backLayer);
     
     containerLayer = LayerColor::create(Color4B::WHITE, visibleSize.width-40, visibleSize.height-40);
     containerLayer->setPosition(20, 20);
+    Size containerSize = containerLayer->getContentSize();
+    auto containerBody = PhysicsBody::createEdgeBox(containerSize,PHYSICSBODY_MATERIAL_DEFAULT,3);
+    auto containerEdgeNode = Node::create();
+    containerEdgeNode->setPosition(Point(visibleSize.width/2,visibleSize.height/2));
+    containerEdgeNode->setPhysicsBody(containerBody);
+    addChild(containerEdgeNode);
+    
     addChild(containerLayer);
     
     
@@ -93,8 +105,8 @@ void HelloWorld::touchPoint(Point point)
             log("%d,%d,%p",s->line,s->row,s);
         }
         manager->destroyStars(list);
-        
-        engine->layoutStarsWithDataSourceAndLayer(manager->dataSource, containerLayer);
+        engine->removeStars(list);
+        engine->relayout(manager->dataSource);
     }
 }
 
