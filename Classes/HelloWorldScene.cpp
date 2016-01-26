@@ -39,9 +39,14 @@ bool HelloWorld::init()
     auto backLayer = LayerColor::create(Color4B::WHITE, visibleSize.width, visibleSize.height);
     addChild(backLayer);
     
+    containerLayer = LayerColor::create(Color4B::WHITE, visibleSize.width-40, visibleSize.height-40);
+    containerLayer->setPosition(20, 20);
+    addChild(containerLayer);
+    
+    
     manager->initStars();
     
-    engine->layoutStarsWithDataSourceAndLayer(manager->dataSource, backLayer);
+    engine->layoutStarsWithDataSourceAndLayer(manager->dataSource, containerLayer);
     {
         auto listener1 = EventListenerTouchOneByOne::create();
         listener1->setSwallowTouches(true);
@@ -57,7 +62,6 @@ bool HelloWorld::init()
             // 点击范围判断检测
             if (rect.containsPoint(locationInNode))
             {
-                log("sprite began... x = %f, y = %f", locationInNode.x, locationInNode.y);
                 this->touchPoint(locationInNode);
                 return true;
             }
@@ -69,7 +73,7 @@ bool HelloWorld::init()
         
         // 点击事件结束处理
         listener1->onTouchEnded = [](Touch* touch, Event* event){};
-        _eventDispatcher->addEventListenerWithSceneGraphPriority(listener1, backLayer);
+        _eventDispatcher->addEventListenerWithSceneGraphPriority(listener1, containerLayer);
 
     }
     
@@ -80,19 +84,17 @@ bool HelloWorld::init()
 void HelloWorld::touchPoint(Point point)
 {
     Point modelPoint = engine->getClickStarModelPointWith(point);
-    log("sprite began... x = %f, y = %f", modelPoint.x, modelPoint.y);
     StarModel* model = manager->getModelForLineAndRow(modelPoint.x, modelPoint.y);
     if (model!=NULL) {
         CCArray* list = manager->getSameColorStarsWithStar(model);
         for(int i = 0 ; i< list->count() ; i++)
         {
             StarModel* s = (StarModel*)list->objectAtIndex(i);
-            
-            Sprite* sprite = engine->getRelatedSpriteWith(s);
-            
-            sprite->setColor(Color3B::BLACK);
-            
+            log("%d,%d",s->line,s->row);
         }
+        manager->destroyStars(list);
+        
+        engine->layoutStarsWithDataSourceAndLayer(manager->dataSource, containerLayer);
     }
 }
 

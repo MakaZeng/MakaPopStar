@@ -44,6 +44,8 @@ public:
     //获取点击ref周边相同颜色的ref
     CCArray* getSameColorStarsWithStar(StarModel * model)
     {
+        blocksInSameColor->removeAllObjects();
+        checkedBlocks->removeAllObjects();
         if (model == NULL) {
             return NULL;
         }
@@ -54,14 +56,15 @@ public:
     }
     
     //摧毁某些ref
-    void destroyStars(Vector<StarModel *> * stars)
+    void destroyStars(CCArray * stars)
     {
-        if (stars->size() == 0) {
+        if (stars->count() == 0) {
             return;
         }
         
-        for(StarModel* model : *stars)
+        for(int i = 0 ; i< stars->count() ; i ++)
         {
+            StarModel* model = (StarModel*)stars->objectAtIndex(i);
             int line = model->line;
             CCArray* rowArray = (CCArray*)dataSource->objectAtIndex(line);
             rowArray->removeObject(model);

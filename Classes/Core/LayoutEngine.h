@@ -38,6 +38,21 @@ public:
     void layoutStarsWithDataSourceAndLayer(CCArray* dataSource , Layer* layer)
     {
         
+        CCArray* emptyArray = CCArray::create();
+        
+        for (int i = 0; i<dataSource->count(); i++) {
+            CCArray* arr = (CCArray*)dataSource->objectAtIndex(i);
+            
+            if (arr->count() == 0) {
+                emptyArray->addObject(arr);
+            }
+        }
+        
+        dataSource->removeObjectsInArray(emptyArray);
+        
+        
+        layer->removeAllChildren();
+        
         allNodes = CCArray::create();
         allNodes->retain();
         
@@ -72,7 +87,10 @@ public:
                 texture->initWithImage(image);
                 CCSprite* bSprite = CCSprite::createWithTexture(texture);
                 
-                bSprite->setPosition(ccp((j+ 0.5)*this->perHeight, (i+0.5)*this->perWidth));
+                bSprite->setPosition(ccp((i+ 0.5)*this->perHeight, (j+0.5)*this->perWidth));
+                
+                model->line = i;
+                model->row = j;
                 
                 bSprite->setScale(2, 2);
                 
@@ -87,10 +105,11 @@ public:
         }
     }
     
+    
     Point getClickStarModelPointWith(Point p)
     {
-        int line = p.y / this->perHeight;
-        int row = p.x / this->perWidth;
+        int row = p.y / this->perHeight;
+        int line = p.x / this->perWidth;
         
         return Vec2(line, row);
     }

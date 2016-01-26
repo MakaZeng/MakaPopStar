@@ -23,6 +23,7 @@ public:
     
     void touchPoint(Point point);
     
+    LayerColor* containerLayer;
 };
 
 #endif // __HELLOWORLD_SCENE_H__
