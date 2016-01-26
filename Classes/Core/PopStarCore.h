@@ -158,7 +158,9 @@ public:
         if (blockUpside ==NULL || blockUpside->type != model->type) {
             return;
         }
-        blocksInSameColor->addObject(blockUpside);
+        if (!blocksInSameColor->containsObject(blockUpside)) {
+            blocksInSameColor->addObject(blockUpside);
+        }
         this->checkFourSides(blockUpside);
     }
     
@@ -167,7 +169,9 @@ public:
         if (blockDownside ==NULL || blockDownside->type != model->type) {
             return;
         }
-        blocksInSameColor->addObject(blockDownside);
+        if (!blocksInSameColor->containsObject(blockDownside)) {
+            blocksInSameColor->addObject(blockDownside);
+        }
         this->checkFourSides(blockDownside);
     }
     
@@ -176,7 +180,9 @@ public:
         if (blockLeftside ==NULL || blockLeftside->type != model->type) {
             return;
         }
-        blocksInSameColor->addObject(blockLeftside);
+        if (!blocksInSameColor->containsObject(blockLeftside)) {
+            blocksInSameColor->addObject(blockLeftside);
+        }
         this->checkFourSides(blockLeftside);
     }
     
@@ -185,7 +191,9 @@ public:
         if (blockRightside ==NULL || blockRightside->type != model->type) {
             return;
         }
-        blocksInSameColor->addObject(blockRightside);
+        if (!blocksInSameColor->containsObject(blockRightside)) {
+            blocksInSameColor->addObject(blockRightside);
+        }
         this->checkFourSides(blockRightside);
     }
 

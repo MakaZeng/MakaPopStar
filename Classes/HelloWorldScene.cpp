@@ -90,7 +90,7 @@ void HelloWorld::touchPoint(Point point)
         for(int i = 0 ; i< list->count() ; i++)
         {
             StarModel* s = (StarModel*)list->objectAtIndex(i);
-            log("%d,%d",s->line,s->row);
+            log("%d,%d,%p",s->line,s->row,s);
         }
         manager->destroyStars(list);
         
