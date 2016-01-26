@@ -34,7 +34,7 @@ public:
     
     Node* starContainer;
     
-    Vector<Vector<StarModel *> *> * dataSource;
+    CCArray* dataSource;
     
     Vector<StarModel *> * checkedBlocks;
     Vector<StarModel *> * blocksInSameColor;
@@ -63,8 +63,8 @@ public:
         for(StarModel* model : *stars)
         {
             int line = model->line;
-            Vector<StarModel *> * rowArray = dataSource->at(line);
-            rowArray->eraseObject(model);
+            CCArray* rowArray = (CCArray*)dataSource->objectAtIndex(line);
+            rowArray->removeObject(model);
         }
     }
     
@@ -72,13 +72,13 @@ public:
     //获取对应位置上的model
     StarModel* getModelForLineAndRow(int line,int row)
     {
-        if (line >= dataSource->size() || line < 0) {
+        if (line >= dataSource->count() || line < 0) {
             return NULL;
         }
-        Vector<StarModel *> * array = dataSource->at(line);
+       CCArray* array = (CCArray*)dataSource->objectAtIndex(line);
         
-        for (int i = 0 ; i < array->size(); i++) {
-            StarModel* model = (StarModel*)array->at(i);
+        for (int i = 0 ; i < array->count(); i++) {
+            StarModel* model = (StarModel*)array->objectAtIndex(i);
             if (model->row == row) {
                 return model;
             }
@@ -89,9 +89,9 @@ public:
     //判断游戏结束
     bool checkDeath()
     {
-        for (int i = 0; i<dataSource->size(); i++) {
-            for (int j = 0; j<((Vector<StarModel *> *)dataSource->at(i))->size(); j++) {
-                StarModel* model = (StarModel*)((Vector<StarModel *> *)dataSource->at(i))->at(j);
+        for (int i = 0; i<dataSource->count(); i++) {
+            for (int j = 0; j<((CCArray*)dataSource->objectAtIndex(i))->count(); j++) {
+                StarModel* model = (StarModel*)((CCArray*)dataSource->objectAtIndex(i))->objectAtIndex(j);
                 StarModel* blockUpside = this->getModelForLineAndRow(model->line+1, model->row);
                 if (blockUpside != NULL && blockUpside->type == model->type) {
                     return false;
@@ -116,16 +116,17 @@ public:
     //初始化矩阵数据
     void initStars()
     {
+        dataSource = CCArray::create();
         for (int i = 0; i<lineCount; i++) {
-            Vector<StarModel *> * lineArray;
-            dataSource->pushBack(lineArray);
+            CCArray* lineArray = CCArray::create();
+            dataSource->addObject(lineArray);
             for (int j = 0; j<rowCount; j++) {
                 int type = arc4random()%typeCount;
                 StarModel* model = new StarModel();
                 model->type = type;
                 model->line = i;
                 model->row = j;
-                lineArray->pushBack(model);
+                lineArray->addObject(model);
             }
         }
     }
