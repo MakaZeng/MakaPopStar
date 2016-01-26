@@ -83,7 +83,7 @@ public:
                 model->line = i;
                 model->row = j;
                 
-                bSprite->setScale(.4,.4);
+                bSprite->setScale(.49,.49);
                 
 //                auto body = PhysicsBody::createBox(Size(bSprite->getContentSize().width+5, bSprite->getContentSize().height+5));
 //                bSprite->setPhysicsBody(body);

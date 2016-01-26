@@ -64,6 +64,10 @@
 		60E782EF1C57C54E00E2FB0A /* image_04.png in Resources */ = {isa = PBXBuildFile; fileRef = 60E782E51C57C54E00E2FB0A /* image_04.png */; };
 		60E782F41C57C94E00E2FB0A /* image_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 60E782F31C57C94E00E2FB0A /* image_01.png */; };
 		60E782F51C57C94E00E2FB0A /* image_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 60E782F31C57C94E00E2FB0A /* image_01.png */; };
+		60E782FA1C57CF1900E2FB0A /* sky.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 60E782F91C57CF1900E2FB0A /* sky.jpg */; };
+		60E782FB1C57CF1900E2FB0A /* sky.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 60E782F91C57CF1900E2FB0A /* sky.jpg */; };
+		60E782FD1C57D5D700E2FB0A /* tap.wav in Resources */ = {isa = PBXBuildFile; fileRef = 60E782FC1C57D5D700E2FB0A /* tap.wav */; };
+		60E782FE1C57D5D700E2FB0A /* tap.wav in Resources */ = {isa = PBXBuildFile; fileRef = 60E782FC1C57D5D700E2FB0A /* tap.wav */; };
 		76384BDEBB1A028E1AB099FE /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B049FBB31F1A727FE6D125 /* CoreFoundation.framework */; };
 		80FD492CB1091512C96C865F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F78643939AD8190A9011AF7A /* CFNetwork.framework */; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
@@ -183,6 +187,8 @@
 		60E782E41C57C54E00E2FB0A /* image_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_03.png; sourceTree = "<group>"; };
 		60E782E51C57C54E00E2FB0A /* image_04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_04.png; sourceTree = "<group>"; };
 		60E782F31C57C94E00E2FB0A /* image_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_01.png; sourceTree = "<group>"; };
+		60E782F91C57CF1900E2FB0A /* sky.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sky.jpg; sourceTree = "<group>"; };
+		60E782FC1C57D5D700E2FB0A /* tap.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tap.wav; sourceTree = "<group>"; };
 		620447DF9ADA4DA7EDE59645 /* InterfaceUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = InterfaceUser.h; path = protocols/include/InterfaceUser.h; sourceTree = SOURCE_ROOT; };
 		691644F29F2FD407F894E548 /* InterfacePush.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = InterfacePush.h; path = protocols/include/InterfacePush.h; sourceTree = SOURCE_ROOT; };
 		74794F1EB63FF2BFCC09A1DD /* AgentManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AgentManager.h; path = protocols/include/AgentManager.h; sourceTree = SOURCE_ROOT; };
@@ -382,6 +388,8 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				60E782FC1C57D5D700E2FB0A /* tap.wav */,
+				60E782F91C57CF1900E2FB0A /* sky.jpg */,
 				60E782F31C57C94E00E2FB0A /* image_01.png */,
 				60E782E11C57C54E00E2FB0A /* image_02.png */,
 				60E782E31C57C54E00E2FB0A /* image_00.png */,
@@ -620,8 +628,10 @@
 				60E782F41C57C94E00E2FB0A /* image_01.png in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
+				60E782FA1C57CF1900E2FB0A /* sky.jpg in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
+				60E782FD1C57D5D700E2FB0A /* tap.wav in Resources */,
 				60E782EE1C57C54E00E2FB0A /* image_04.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				3EACC98F19EE6D4300EB3C5E /* res in Resources */,
@@ -637,9 +647,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60E782FB1C57CF1900E2FB0A /* sky.jpg in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
 				3EACC99019EE6D4300EB3C5E /* res in Resources */,
 				60E782F51C57C94E00E2FB0A /* image_01.png in Resources */,
+				60E782FE1C57D5D700E2FB0A /* tap.wav in Resources */,
 				60E782ED1C57C54E00E2FB0A /* image_03.png in Resources */,
 				60E782EB1C57C54E00E2FB0A /* image_00.png in Resources */,
 				60E782EF1C57C54E00E2FB0A /* image_04.png in Resources */,

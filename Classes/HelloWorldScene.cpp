@@ -1,10 +1,28 @@
 #include "HelloWorldScene.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
+#include "SimpleAudioEngine.h"
+#include "cocos-ext.h"
 
 USING_NS_CC;
+using namespace cocos2d::extension;
 
 using namespace cocostudio::timeline;
+
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+
+#define MUSIC_FILE        "tap.wav"
+
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_BLACKBERRY || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX )
+
+#define MUSIC_FILE        "tap.wav"
+
+#else
+
+#define MUSIC_FILE        "tap.wav"
+
+#endif
 
 Scene* HelloWorld::createScene()
 {
@@ -41,11 +59,21 @@ bool HelloWorld::init()
     addChild(edgeNode);
     
     
-    auto backLayer = LayerColor::create(Color4B::WHITE, visibleSize.width, visibleSize.height);
+    auto backLayer = LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height);
     addChild(backLayer);
     
-    containerLayer = LayerColor::create(Color4B::WHITE, visibleSize.width-40, visibleSize.height-40);
-    containerLayer->setPosition(20, 20);
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(MUSIC_FILE);
+    
+    //设置默认音量
+    
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0.03);
+    
+    Sprite* backImage = Sprite::create("sky.jpg");
+    backImage->setPosition(Point(backImage->getContentSize().width/2,backImage->getContentSize().height/2));
+    addChild(backImage);
+    
+    containerLayer = Layer::create();
+    containerLayer->setPosition(0, 20);
     Size containerSize = containerLayer->getContentSize();
     auto containerBody = PhysicsBody::createEdgeBox(containerSize,PHYSICSBODY_MATERIAL_DEFAULT,3);
     auto containerEdgeNode = Node::create();
@@ -54,7 +82,6 @@ bool HelloWorld::init()
     addChild(containerEdgeNode);
     
     addChild(containerLayer);
-    
     
     manager->initStars();
     
@@ -103,6 +130,9 @@ void HelloWorld::touchPoint(Point point)
         {
             StarModel* s = (StarModel*)list->objectAtIndex(i);
             log("%d,%d,%p",s->line,s->row,s);
+        }
+        if (list->count() >= 2) {
+            CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic(MUSIC_FILE,false);
         }
         manager->destroyStars(list);
         engine->removeStars(list);
