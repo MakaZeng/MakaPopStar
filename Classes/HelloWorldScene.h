@@ -2,8 +2,8 @@
 #define __HELLOWORLD_SCENE_H__
 
 #include "cocos2d.h"
-#include "PopStarCore.h"
-#include "LayoutEngine.h"
+#include "PopStarCore.cpp"
+#include "LayoutEngine.cpp"
 
 class HelloWorld : public cocos2d::Layer
 {

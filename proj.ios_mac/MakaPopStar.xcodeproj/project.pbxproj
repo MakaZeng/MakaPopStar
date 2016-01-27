@@ -55,6 +55,10 @@
 		60E782FD1C57D5D700E2FB0A /* tap.wav in Resources */ = {isa = PBXBuildFile; fileRef = 60E782FC1C57D5D700E2FB0A /* tap.wav */; };
 		60E782FE1C57D5D700E2FB0A /* tap.wav in Resources */ = {isa = PBXBuildFile; fileRef = 60E782FC1C57D5D700E2FB0A /* tap.wav */; };
 		60E7831B1C57F16B00E2FB0A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60E7831A1C57F16B00E2FB0A /* Images.xcassets */; };
+		60F972E61C58FD03005A38E7 /* LayoutEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60F972E51C58FD03005A38E7 /* LayoutEngine.cpp */; };
+		60F972E71C58FD03005A38E7 /* LayoutEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60F972E51C58FD03005A38E7 /* LayoutEngine.cpp */; };
+		60F972E91C58FD8C005A38E7 /* PopStarCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60F972E81C58FD8C005A38E7 /* PopStarCore.cpp */; };
+		60F972EA1C58FD8C005A38E7 /* PopStarCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60F972E81C58FD8C005A38E7 /* PopStarCore.cpp */; };
 		76384BDEBB1A028E1AB099FE /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B049FBB31F1A727FE6D125 /* CoreFoundation.framework */; };
 		80FD492CB1091512C96C865F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F78643939AD8190A9011AF7A /* CFNetwork.framework */; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
@@ -121,8 +125,6 @@
 		241C442C1C58B0D600BDB553 /* image_05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_05.png; sourceTree = "<group>"; };
 		241C442D1C58B0D600BDB553 /* image_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_02.png; sourceTree = "<group>"; };
 		241C442E1C58B0D600BDB553 /* image_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_03.png; sourceTree = "<group>"; };
-		24B8F9231C57210400D103F3 /* PopStarCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopStarCore.h; sourceTree = "<group>"; };
-		24B8F9241C57583400D103F3 /* LayoutEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayoutEngine.h; sourceTree = "<group>"; };
 		27DB44E691E0860009A2F945 /* CocosRuntimeDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CocosRuntimeDelegate.h; path = protocols/include/CocosRuntimeDelegate.h; sourceTree = SOURCE_ROOT; };
 		287D4D358FEDC2E14C189416 /* RECWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RECWrapper.h; path = protocols/include/RECWrapper.h; sourceTree = SOURCE_ROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -161,6 +163,8 @@
 		60E782F91C57CF1900E2FB0A /* sky.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sky.jpg; sourceTree = "<group>"; };
 		60E782FC1C57D5D700E2FB0A /* tap.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tap.wav; sourceTree = "<group>"; };
 		60E7831A1C57F16B00E2FB0A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "MakaPopStar-mobile/Images.xcassets"; sourceTree = SOURCE_ROOT; };
+		60F972E51C58FD03005A38E7 /* LayoutEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LayoutEngine.cpp; sourceTree = "<group>"; };
+		60F972E81C58FD8C005A38E7 /* PopStarCore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PopStarCore.cpp; sourceTree = "<group>"; };
 		620447DF9ADA4DA7EDE59645 /* InterfaceUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = InterfaceUser.h; path = protocols/include/InterfaceUser.h; sourceTree = SOURCE_ROOT; };
 		691644F29F2FD407F894E548 /* InterfacePush.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = InterfacePush.h; path = protocols/include/InterfacePush.h; sourceTree = SOURCE_ROOT; };
 		74794F1EB63FF2BFCC09A1DD /* AgentManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AgentManager.h; path = protocols/include/AgentManager.h; sourceTree = SOURCE_ROOT; };
@@ -291,15 +295,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		24B8F9221C5720E900D103F3 /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				24B8F9241C57583400D103F3 /* LayoutEngine.h */,
-				24B8F9231C57210400D103F3 /* PopStarCore.h */,
-			);
-			path = Core;
-			sourceTree = "<group>";
-		};
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
@@ -384,7 +379,8 @@
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
 				46880B8619C43A87006E1F66 /* HelloWorldScene.cpp */,
 				46880B8719C43A87006E1F66 /* HelloWorldScene.h */,
-				24B8F9221C5720E900D103F3 /* Core */,
+				60F972E51C58FD03005A38E7 /* LayoutEngine.cpp */,
+				60F972E81C58FD8C005A38E7 /* PopStarCore.cpp */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -614,8 +610,10 @@
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				60F972E91C58FD8C005A38E7 /* PopStarCore.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				60F972E61C58FD03005A38E7 /* LayoutEngine.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,7 +621,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60F972EA1C58FD8C005A38E7 /* PopStarCore.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
+				60F972E71C58FD03005A38E7 /* LayoutEngine.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				46880B8B19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 			);
