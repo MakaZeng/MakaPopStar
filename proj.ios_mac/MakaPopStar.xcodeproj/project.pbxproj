@@ -50,8 +50,6 @@
 		521A8EA919F11F5000D177D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EA819F11F5000D177D7 /* fonts */; };
 		521A8EAA19F11F5000D177D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EA819F11F5000D177D7 /* fonts */; };
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
-		60E782FA1C57CF1900E2FB0A /* sky.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 60E782F91C57CF1900E2FB0A /* sky.jpg */; };
-		60E782FB1C57CF1900E2FB0A /* sky.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 60E782F91C57CF1900E2FB0A /* sky.jpg */; };
 		60E782FD1C57D5D700E2FB0A /* tap.wav in Resources */ = {isa = PBXBuildFile; fileRef = 60E782FC1C57D5D700E2FB0A /* tap.wav */; };
 		60E782FE1C57D5D700E2FB0A /* tap.wav in Resources */ = {isa = PBXBuildFile; fileRef = 60E782FC1C57D5D700E2FB0A /* tap.wav */; };
 		60E7831B1C57F16B00E2FB0A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60E7831A1C57F16B00E2FB0A /* Images.xcassets */; };
@@ -59,6 +57,14 @@
 		60F972E71C58FD03005A38E7 /* LayoutEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60F972E51C58FD03005A38E7 /* LayoutEngine.cpp */; };
 		60F972E91C58FD8C005A38E7 /* PopStarCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60F972E81C58FD8C005A38E7 /* PopStarCore.cpp */; };
 		60F972EA1C58FD8C005A38E7 /* PopStarCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60F972E81C58FD8C005A38E7 /* PopStarCore.cpp */; };
+		60F972EC1C59060A005A38E7 /* sky.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 60F972EB1C59060A005A38E7 /* sky.jpg */; };
+		60F972ED1C59060A005A38E7 /* sky.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 60F972EB1C59060A005A38E7 /* sky.jpg */; };
+		60F972F11C591595005A38E7 /* MainScence.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60F972EF1C591595005A38E7 /* MainScence.cpp */; };
+		60F972F21C591595005A38E7 /* MainScence.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60F972EF1C591595005A38E7 /* MainScence.cpp */; };
+		60F972F61C59172F005A38E7 /* ScreenUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60F972F41C59172F005A38E7 /* ScreenUtil.cpp */; };
+		60F972F71C59172F005A38E7 /* ScreenUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60F972F41C59172F005A38E7 /* ScreenUtil.cpp */; };
+		60F972FA1C5919E2005A38E7 /* CommonUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60F972F81C5919E2005A38E7 /* CommonUtil.cpp */; };
+		60F972FB1C5919E2005A38E7 /* CommonUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60F972F81C5919E2005A38E7 /* CommonUtil.cpp */; };
 		76384BDEBB1A028E1AB099FE /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B049FBB31F1A727FE6D125 /* CoreFoundation.framework */; };
 		80FD492CB1091512C96C865F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F78643939AD8190A9011AF7A /* CFNetwork.framework */; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
@@ -160,11 +166,17 @@
 		52B47A461A53D09B004E4C60 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		563C4DCFA267E8D34A9F6CFB /* JsonParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JsonParser.h; path = protocols/include/JsonParser.h; sourceTree = SOURCE_ROOT; };
 		5D7A47E795DE4570CC909C72 /* SdkHttpListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SdkHttpListener.h; path = protocols/include/SdkHttpListener.h; sourceTree = SOURCE_ROOT; };
-		60E782F91C57CF1900E2FB0A /* sky.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sky.jpg; sourceTree = "<group>"; };
 		60E782FC1C57D5D700E2FB0A /* tap.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tap.wav; sourceTree = "<group>"; };
 		60E7831A1C57F16B00E2FB0A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "MakaPopStar-mobile/Images.xcassets"; sourceTree = SOURCE_ROOT; };
 		60F972E51C58FD03005A38E7 /* LayoutEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LayoutEngine.cpp; sourceTree = "<group>"; };
 		60F972E81C58FD8C005A38E7 /* PopStarCore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PopStarCore.cpp; sourceTree = "<group>"; };
+		60F972EB1C59060A005A38E7 /* sky.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sky.jpg; sourceTree = "<group>"; };
+		60F972EF1C591595005A38E7 /* MainScence.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainScence.cpp; sourceTree = "<group>"; };
+		60F972F01C591595005A38E7 /* MainScence.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MainScence.hpp; sourceTree = "<group>"; };
+		60F972F41C59172F005A38E7 /* ScreenUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScreenUtil.cpp; sourceTree = "<group>"; };
+		60F972F51C59172F005A38E7 /* ScreenUtil.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ScreenUtil.hpp; sourceTree = "<group>"; };
+		60F972F81C5919E2005A38E7 /* CommonUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CommonUtil.cpp; sourceTree = "<group>"; };
+		60F972F91C5919E2005A38E7 /* CommonUtil.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CommonUtil.hpp; sourceTree = "<group>"; };
 		620447DF9ADA4DA7EDE59645 /* InterfaceUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = InterfaceUser.h; path = protocols/include/InterfaceUser.h; sourceTree = SOURCE_ROOT; };
 		691644F29F2FD407F894E548 /* InterfacePush.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = InterfacePush.h; path = protocols/include/InterfacePush.h; sourceTree = SOURCE_ROOT; };
 		74794F1EB63FF2BFCC09A1DD /* AgentManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AgentManager.h; path = protocols/include/AgentManager.h; sourceTree = SOURCE_ROOT; };
@@ -355,6 +367,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				60F972EB1C59060A005A38E7 /* sky.jpg */,
 				241C44291C58B0D600BDB553 /* image_00.png */,
 				241C442A1C58B0D600BDB553 /* image_04.png */,
 				241C442B1C58B0D600BDB553 /* image_01.png */,
@@ -363,7 +376,6 @@
 				241C442E1C58B0D600BDB553 /* image_03.png */,
 				60E7831A1C57F16B00E2FB0A /* Images.xcassets */,
 				60E782FC1C57D5D700E2FB0A /* tap.wav */,
-				60E782F91C57CF1900E2FB0A /* sky.jpg */,
 				241C440E1C589A4600BDB553 /* ParticleStar.png */,
 				521A8EA819F11F5000D177D7 /* fonts */,
 				3EACC98E19EE6D4300EB3C5E /* res */,
@@ -381,6 +393,8 @@
 				46880B8719C43A87006E1F66 /* HelloWorldScene.h */,
 				60F972E51C58FD03005A38E7 /* LayoutEngine.cpp */,
 				60F972E81C58FD8C005A38E7 /* PopStarCore.cpp */,
+				60F972F31C59171F005A38E7 /* Utils */,
+				60F972EE1C591513005A38E7 /* Scences */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -414,6 +428,26 @@
 			name = Icons;
 			path = ios;
 			sourceTree = SOURCE_ROOT;
+		};
+		60F972EE1C591513005A38E7 /* Scences */ = {
+			isa = PBXGroup;
+			children = (
+				60F972EF1C591595005A38E7 /* MainScence.cpp */,
+				60F972F01C591595005A38E7 /* MainScence.hpp */,
+			);
+			path = Scences;
+			sourceTree = "<group>";
+		};
+		60F972F31C59171F005A38E7 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				60F972F41C59172F005A38E7 /* ScreenUtil.cpp */,
+				60F972F51C59172F005A38E7 /* ScreenUtil.hpp */,
+				60F972F81C5919E2005A38E7 /* CommonUtil.cpp */,
+				60F972F91C5919E2005A38E7 /* CommonUtil.hpp */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
 		};
 		9E5B4D2080E92BBD07D29C7D /* include */ = {
 			isa = PBXGroup;
@@ -574,8 +608,8 @@
 				60E7831B1C57F16B00E2FB0A /* Images.xcassets in Resources */,
 				241C44371C58B0D600BDB553 /* image_02.png in Resources */,
 				241C440F1C589A4600BDB553 /* ParticleStar.png in Resources */,
-				60E782FA1C57CF1900E2FB0A /* sky.jpg in Resources */,
 				241C44311C58B0D600BDB553 /* image_04.png in Resources */,
+				60F972EC1C59060A005A38E7 /* sky.jpg in Resources */,
 				60E782FD1C57D5D700E2FB0A /* tap.wav in Resources */,
 				3EACC98F19EE6D4300EB3C5E /* res in Resources */,
 			);
@@ -589,12 +623,12 @@
 				241C44341C58B0D600BDB553 /* image_01.png in Resources */,
 				241C44301C58B0D600BDB553 /* image_00.png in Resources */,
 				241C44361C58B0D600BDB553 /* image_05.png in Resources */,
-				60E782FB1C57CF1900E2FB0A /* sky.jpg in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
 				241C44381C58B0D600BDB553 /* image_02.png in Resources */,
 				3EACC99019EE6D4300EB3C5E /* res in Resources */,
 				60E782FE1C57D5D700E2FB0A /* tap.wav in Resources */,
 				241C44321C58B0D600BDB553 /* image_04.png in Resources */,
+				60F972ED1C59060A005A38E7 /* sky.jpg in Resources */,
 				241C44101C589A4600BDB553 /* ParticleStar.png in Resources */,
 				521A8EAA19F11F5000D177D7 /* fonts in Resources */,
 			);
@@ -607,11 +641,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60F972FA1C5919E2005A38E7 /* CommonUtil.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				60F972E91C58FD8C005A38E7 /* PopStarCore.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
+				60F972F61C59172F005A38E7 /* ScreenUtil.cpp in Sources */,
+				60F972F11C591595005A38E7 /* MainScence.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				60F972E61C58FD03005A38E7 /* LayoutEngine.cpp in Sources */,
 			);
@@ -622,9 +659,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				60F972EA1C58FD8C005A38E7 /* PopStarCore.cpp in Sources */,
+				60F972F71C59172F005A38E7 /* ScreenUtil.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				60F972E71C58FD03005A38E7 /* LayoutEngine.cpp in Sources */,
+				60F972F21C591595005A38E7 /* MainScence.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
+				60F972FB1C5919E2005A38E7 /* CommonUtil.cpp in Sources */,
 				46880B8B19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
