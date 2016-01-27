@@ -103,7 +103,7 @@ public:
                 model->line = i;
                 model->row = j;
                 
-                bSprite->setScale(0.49,0.49);
+                bSprite->setScale(0.1,0.1);
                 
 //                auto body = PhysicsBody::createBox(Size(bSprite->getContentSize().width+5, bSprite->getContentSize().height+5));
 //                bSprite->setPhysicsBody(body);
@@ -177,6 +177,9 @@ public:
             
             cacheLayer->scheduleOnce([sp,this](float){
                 //CCParticleMeteor特效
+                if (!sp->isRunning()) {
+                    return ;
+                }
                 CCParticleSystem * p6=CCParticleExplosion::create();
                 p6->setTexture(CCTextureCache::sharedTextureCache()->addImage("ParticleStar.png"));
                 p6->setSpeed(100);
