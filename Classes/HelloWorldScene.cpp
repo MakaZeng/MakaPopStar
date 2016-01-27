@@ -1,28 +1,11 @@
 #include "HelloWorldScene.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
-#include "SimpleAudioEngine.h"
-#include "cocos-ext.h"
 
 USING_NS_CC;
 using namespace cocos2d::extension;
 
 using namespace cocostudio::timeline;
-
-
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
-
-#define MUSIC_FILE        "tap.wav"
-
-#elif (CC_TARGET_PLATFORM == CC_PLATFORM_BLACKBERRY || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX )
-
-#define MUSIC_FILE        "tap.wav"
-
-#else
-
-#define MUSIC_FILE        "tap.wav"
-
-#endif
 
 Scene* HelloWorld::createScene()
 {
@@ -140,7 +123,9 @@ void HelloWorld::touchPoint(Point point)
         }
         manager->destroyStars(list);
         engine->removeStars(list);
-        engine->relayout(manager->dataSource);
+        scheduleOnce([this](float){
+            engine->relayout(manager->dataSource);
+        }, 0.2*list->count(), "pop");
     }
     
     if (manager->checkDeath()) {

@@ -11,8 +11,25 @@
 
 #include "cocos2d.h"
 #include "PopStarCore.h"
+#include "SimpleAudioEngine.h"
+#include "cocos-ext.h"
 
 using namespace cocos2d;
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+
+#define MUSIC_FILE        "tap.wav"
+
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_BLACKBERRY || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX )
+
+#define MUSIC_FILE        "tap.wav"
+
+#else
+
+#define MUSIC_FILE        "tap.wav"
+
+#endif
+
 
 class StarNode :public Node {
 public:
@@ -158,7 +175,36 @@ public:
             
             removeNodeForModel(model);
             
-            cacheLayer->removeChild(sp);
+            cacheLayer->scheduleOnce([sp,this](float){
+                //CCParticleMeteor特效
+                CCParticleSystem * p6=CCParticleExplosion::create();
+                p6->setTexture(CCTextureCache::sharedTextureCache()->addImage("ParticleStar.png"));
+                p6->setSpeed(100);
+                p6->setSpeedVar(20);
+                p6->setStartSize(50);
+                p6->setStartSizeVar(5);
+                p6->setEndSize(10);
+                p6->setEndSizeVar(2);
+                p6->setAutoRemoveOnFinish(true);
+                p6->setAngle(360);
+                p6->setPosition(sp->getPosition());
+                p6->setPositionType(kCCPositionTypeFree);
+                p6->setTotalParticles(5);
+                p6->setDuration(1);
+                p6->setLife(1.5);
+                p6->setLifeVar(0.25);
+                p6->setEmissionRate(60);
+                p6->setEmitterMode(kCCParticleModeGravity);
+                
+                p6->setStartColor( ccc4f(200/255.0, 0/255.0, 0/255.0, 255/255.0) );
+                p6->setStartColorVar( ccc4f(0, 0, 0, 0) );
+                p6->setEndColor( ccc4f(0, 0, 0, 0) );
+                p6->setEndColorVar( ccc4f(0, 0, 0, 0) );
+                
+                CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic(MUSIC_FILE,false);
+                cacheLayer->addChild(p6);
+                cacheLayer->removeChild(sp);
+            }, i*0.2, String::createWithFormat("Part%d",i) ->getCString());
         }
     }
     
