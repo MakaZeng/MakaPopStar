@@ -147,7 +147,7 @@ public:
         
         layer->setContentSize(Size(width, height));
         
-        Sprite* sp = Sprite::create("backImage.png");
+        Sprite* sp = Sprite::create("star.png");
         sp->setScale(width/5, height/5);
         sp->cocos2d::Node::setAnchorPoint(Point(0,0));
         layer->addChild(sp);

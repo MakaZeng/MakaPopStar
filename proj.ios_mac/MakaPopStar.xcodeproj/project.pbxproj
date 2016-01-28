@@ -119,6 +119,10 @@
 		60F9737B1C5A7536005A38E7 /* readygo.wav in Resources */ = {isa = PBXBuildFile; fileRef = 60F973601C5A7536005A38E7 /* readygo.wav */; };
 		60F9737C1C5A7536005A38E7 /* select.wav in Resources */ = {isa = PBXBuildFile; fileRef = 60F973611C5A7536005A38E7 /* select.wav */; };
 		60F9737D1C5A7536005A38E7 /* select.wav in Resources */ = {isa = PBXBuildFile; fileRef = 60F973611C5A7536005A38E7 /* select.wav */; };
+		60F973801C5A7909005A38E7 /* button_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 60F9737E1C5A7909005A38E7 /* button_gray.png */; };
+		60F973811C5A7909005A38E7 /* button_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 60F9737E1C5A7909005A38E7 /* button_gray.png */; };
+		60F973821C5A7909005A38E7 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 60F9737F1C5A7909005A38E7 /* button.png */; };
+		60F973831C5A7909005A38E7 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 60F9737F1C5A7909005A38E7 /* button.png */; };
 		67264650BD08F5A9E8B7ED1D /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D65417CAF89D7ADE4119FEC /* libcocos2d iOS.a */; };
 		6CC743B7AEC6C4A1F5FEC304 /* res in Resources */ = {isa = PBXBuildFile; fileRef = 01F741B993AED8B544209AD5 /* res */; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
@@ -221,6 +225,8 @@
 		60F9735F1C5A7536005A38E7 /* pop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pop.wav; sourceTree = "<group>"; };
 		60F973601C5A7536005A38E7 /* readygo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = readygo.wav; sourceTree = "<group>"; };
 		60F973611C5A7536005A38E7 /* select.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = select.wav; sourceTree = "<group>"; };
+		60F9737E1C5A7909005A38E7 /* button_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_gray.png; sourceTree = "<group>"; };
+		60F9737F1C5A7909005A38E7 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -377,6 +383,8 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				60F9737E1C5A7909005A38E7 /* button_gray.png */,
+				60F9737F1C5A7909005A38E7 /* button.png */,
 				60F973171C5A7452005A38E7 /* image_00_s.png */,
 				60F973181C5A7452005A38E7 /* image_00.png */,
 				60F973111C5A7443005A38E7 /* image_01_s.png */,
@@ -566,6 +574,7 @@
 				60F973661C5A7536005A38E7 /* clear.wav in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
+				60F973821C5A7909005A38E7 /* button.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
 				60F9736E1C5A7536005A38E7 /* music.wav in Resources */,
 				60F9737A1C5A7536005A38E7 /* readygo.wav in Resources */,
@@ -575,6 +584,7 @@
 				60F9737C1C5A7536005A38E7 /* select.wav in Resources */,
 				60F973641C5A7536005A38E7 /* cheer.wav in Resources */,
 				60F973071C5A7429005A38E7 /* image_03_s.png in Resources */,
+				60F973801C5A7909005A38E7 /* button_gray.png in Resources */,
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
 				60F973701C5A7536005A38E7 /* music1.wav in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
@@ -622,6 +632,7 @@
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
 				60F973731C5A7536005A38E7 /* music2.wav in Resources */,
 				24711BC91C59F57800BB6001 /* Images.xcassets in Resources */,
+				60F973831C5A7909005A38E7 /* button.png in Resources */,
 				60F9731A1C5A7452005A38E7 /* image_00_s.png in Resources */,
 				6CC743B7AEC6C4A1F5FEC304 /* res in Resources */,
 				60F973021C5A7421005A38E7 /* image_04_s.png in Resources */,
@@ -630,6 +641,7 @@
 				60F973651C5A7536005A38E7 /* cheer.wav in Resources */,
 				60F9737D1C5A7536005A38E7 /* select.wav in Resources */,
 				60F973771C5A7536005A38E7 /* music4.mp3 in Resources */,
+				60F973811C5A7909005A38E7 /* button_gray.png in Resources */,
 				60F9736F1C5A7536005A38E7 /* music.wav in Resources */,
 				60F9731C1C5A7452005A38E7 /* image_00.png in Resources */,
 				60F973751C5A7536005A38E7 /* music3.mp3 in Resources */,

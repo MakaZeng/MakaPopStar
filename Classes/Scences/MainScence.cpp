@@ -39,7 +39,7 @@ bool MainScence::init()
     
     Size contentSize = this->getContentSize();
     
-    __String* pointer = __String::create("sky.jpg");
+    __String* pointer = __String::create("image_00.png");
     
     Sprite* sp = CommonUtil::runRoundSpriteWithImageName(pointer,40);
     
@@ -57,6 +57,16 @@ bool MainScence::init()
     
     CommonUtil::addEaseZoonIn(sp);
     addChild(sp);
+    
+    
+    pointer = __String::create("image_00.png");
+    Button* btn = CommonUtil::buttonForBackImageAndContent(pointer, __String::create("Play"));
+    btn->setContentSize(Size(100, 50));
+    btn->setPosition(Point(contentSize.width/2,50));
+    
+    btn->addTouchEventListener(this, toucheventselector(MainScence::switchToClassicMode));
+    
+    addChild(btn);
     
     this->scheduleUpdate();
     
@@ -85,23 +95,13 @@ void MainScence::update(float dt)
     
     Size contentSize = this->getContentSize();
     
-    __String* pointer = __String::create("image_00.png");
+    __String* pointer = __String::create("star.png");
     
     ParticleSystem* s = CommonUtil::getParticleSystemForImageNameAndLayer(pointer);
     
     s->setPosition(rand()%(int)contentSize.width,rand()%(int)contentSize.height);
     
     addChild(s);
-    
-    
-    pointer = __String::create("Red_button_back.png");
-    Button* btn = CommonUtil::buttonForBackImageAndContent(pointer, __String::create("Play"));
-    btn->setContentSize(Size(100, 50));
-    btn->setPosition(Point(contentSize.width/2,50));
-    
-    btn->addTouchEventListener(this, toucheventselector(MainScence::switchToClassicMode));
-    
-    addChild(btn);
 }
 
 void MainScence::switchToClassicMode()
