@@ -32,13 +32,27 @@ bool ClassicModelScence::init()
         return false;
     }
     
+    Size contentSize = ScreenUtil::getBestScreenSize();
+    
+    Layer* starsContainer = Layer::create();
+    
+    float padding = 40;
+    
+    starsContainer->setContentSize(Size(contentSize.width - padding , contentSize.height - padding));
+    
+    starsContainer->setAnchorPoint(Point(0,0));
+    
+    starsContainer->setPosition(Point(padding/2,padding/2));
+    
+    addChild(starsContainer);
+    
     MatrixManager* core = new MatrixManager();
     
     core->initStars();
     
     LayoutEngine* engine = new LayoutEngine();
     
-    engine->layoutStarsWithDataSourceAndLayer(core->dataSource, this);
+    engine->layoutStarsWithDataSourceAndLayer(core->dataSource, starsContainer);
     
     return true;
 }

@@ -27,8 +27,8 @@ class MatrixManager : public Ref {
 public:
     
     int typeCount = 5;
-    int lineCount = 10;
-    int rowCount = 10;
+    int lineCount = 20;
+    int rowCount = 25;
     
     Node* starContainer;
     

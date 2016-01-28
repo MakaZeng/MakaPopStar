@@ -132,6 +132,16 @@ public:
         return buttonPlay;
     }
     
+    static float getScaleForTargetWithImage(float t , Sprite* image)
+    {
+        Size textureSize = image->getTextureRect().size;
+        
+        return getScaleForTargetWithCurrent(t, textureSize.width);
+    }
+    
+    static float getScaleForTargetWithCurrent(float t , float c){
+        return t/c;
+    }
 };
 
 #endif /* CommonUtil_hpp */

@@ -11,14 +11,13 @@
 
 #include <stdio.h>
 #include "PopStarCore.hpp"
+#include "CommonUtil.hpp"
+#include "ScreenUtil.hpp"
 
 class StarNode :public Node {
 public:
-    
     StarModel* model;
-    
     Sprite* sprite;
-    
     Point targetCenter;
     
 public:
@@ -32,70 +31,49 @@ public:
     float perWidth;
     float perHeight;
     CCArray* allNodes;
-    Layer* cacheLayer;
+    
+    Layer* containerLayer;
     
 public:
     
     void layoutStarsWithDataSourceAndLayer(CCArray* dataSource , Layer* layer)
     {
-        cacheLayer = layer;
-        
-        layer->removeAllChildren();
+        containerLayer = layer;
         
         allNodes = CCArray::create();
         allNodes->retain();
         
-        Rect rect = layer->getBoundingBox();
+        Size contentSize = layer->getContentSize();
         
-        perWidth = rect.size.width/10;
+        perWidth = contentSize.width/20;
         perHeight = perWidth;
         
         CCArray* nameArray = CCArray::create();
+        for (int i = 0; i<5; i++) {
+            __String* s = __String::createWithFormat("image_0%d.png",i);
+            nameArray->addObject(s);
+        }
         
-        String* blue = String::create("image_00.png");
-        String* green = String::create("image_01.png");
-        String* orange = String::create("image_02.png");
-        String* purple = String::create("image_03.png");
-        String* red = String::create("image_04.png");
-        
-        nameArray->addObject(blue);
-        nameArray->addObject(green);
-        nameArray->addObject(orange);
-        nameArray->addObject(purple);
-        nameArray->addObject(red);
+        Size screenSize = ScreenUtil::getBestScreenSize();
         
         for (int i = 0; i<dataSource->count(); i++) {
             for (int j = 0; j<((CCArray*)dataSource->objectAtIndex(i))->count(); j++) {
                 StarModel* model = (StarModel*)((CCArray*)dataSource->objectAtIndex(i))->objectAtIndex(j);
-                CCImage* image = new CCImage();
-                String* fileName = (String*)nameArray->objectAtIndex(model->type);
-                String path = CCFileUtils::sharedFileUtils()->fullPathForFilename(fileName->getCString());
-                image->initWithImageFile(path.getCString());
-                
-                CCTexture2D* texture = new CCTexture2D;
-                texture->initWithImage(image);
-                CCSprite* bSprite = CCSprite::createWithTexture(texture);
-                
-                bSprite->setPosition(ccp((i+ 0.5)*this->perHeight, (j+0.5)*this->perWidth + Director::sharedDirector()->getVisibleSize().height));
-                
-                CCActionInterval * moveBy = CCMoveBy::create(1+i*.1+j*.1,Vec2(0, 0 - Director::sharedDirector()->getVisibleSize().height));
-                bSprite->runAction(moveBy);
-                
                 model->line = i;
                 model->row = j;
                 
-                bSprite->setScale(0.1,0.1);
-                
-                //                auto body = PhysicsBody::createBox(Size(bSprite->getContentSize().width+5, bSprite->getContentSize().height+5));
-                //                bSprite->setPhysicsBody(body);
-                //
+                __String* file = (__String*)nameArray->objectAtIndex(model->type);
+                Sprite* bSprite = Sprite::create(file->getCString());
+                bSprite->setPosition(Point((i+ 0.5)*this->perHeight, (j+0.5)*this->perWidth + screenSize.height));
+                ActionInterval * moveBy = MoveBy::create(1+i*.05+j*.05,Vec2(0, 0 - screenSize.height));
+                bSprite->runAction(moveBy);
+                bSprite->setScale(CommonUtil::getScaleForTargetWithImage(perWidth, bSprite));
                 layer->addChild(bSprite);
                 
                 StarNode* node = new StarNode();
                 node->sprite = bSprite;
                 node->model = model;
                 node->targetCenter = bSprite->getPosition();
-                
                 allNodes->addObject(node);
             }
         }
@@ -151,19 +129,8 @@ public:
         for(int i = 0 ; i < stars->count() ; i ++)
         {
             StarModel* model = (StarModel*)stars->objectAtIndex(i);
-            
             Sprite* sp = getRelatedSpriteWith(model);
-            
             removeNodeForModel(model);
-            
-            cacheLayer->scheduleOnce([sp,this](float){
-                //CCParticleMeteor特效
-                if (!sp->isRunning()) {
-                    return ;
-                }
-                
-                cacheLayer->removeChild(sp);
-            }, i*0.2, String::createWithFormat("Part%d",i) ->getCString());
         }
     }
     
