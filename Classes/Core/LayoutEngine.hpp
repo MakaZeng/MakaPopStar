@@ -132,7 +132,7 @@ public:
             Sprite* sp = getRelatedSpriteWith(model);
             containerLayer->scheduleOnce([sp](float dt){
                 sp->removeFromParent();
-            }, .1*i, __String::createWithFormat("random%d",i)->getCString());
+            }, .1*i > 2 ? 2 :.1*i, __String::createWithFormat("random%d",i)->getCString());
             
             removeNodeForModel(model);
         }
