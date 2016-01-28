@@ -135,7 +135,7 @@ public:
             containerLayer->scheduleOnce([sp,i](float dt){
                 sp->removeFromParent();
                 if (i<=8) {
-                    CommonUtil::playSoundWithName(__String::create("pop"),0.5,1+i/16);
+                    CommonUtil::playSoundWithName(__String::create("pop"),0.8,0.5+i/16.0);
                 }
             }, .2*i > 1.6 ? 1.6 :.2*i, __String::createWithFormat("random%d",i)->getCString());
             
