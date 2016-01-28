@@ -97,5 +97,13 @@ void MainScence::update(float dt)
     Button* btn = CommonUtil::buttonForBackImageAndContent(pointer, __String::create("Play"));
     btn->setContentSize(Size(100, 50));
     btn->setPosition(Point(contentSize.width/2,50));
+    
+    btn->addTouchEventListener(this, toucheventselector(MainScence::switchToClassicMode));
+    
     addChild(btn);
+}
+
+void MainScence::switchToClassicMode()
+{
+    
 }

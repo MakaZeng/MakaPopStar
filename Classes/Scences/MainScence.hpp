@@ -25,6 +25,7 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(MainScence);
     
+    void switchToClassicMode();
     void update(float dt);
 };
 
