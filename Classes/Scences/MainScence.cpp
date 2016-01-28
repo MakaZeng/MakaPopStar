@@ -36,7 +36,13 @@ bool MainScence::init()
         return false;
     }
     
-    Size contentSize  = ScreenUtil::getBestScreenSize();
+    
+    
+    __String* pointer = __String::create("sky.jpg");
+    
+    Sprite* sp = CommonUtil::getBackSpriteForImageNameAndLayer(pointer, this);
+    
+    addChild(sp);
     
     return true;
 }

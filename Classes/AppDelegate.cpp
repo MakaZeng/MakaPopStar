@@ -1,9 +1,6 @@
 #include "AppDelegate.h"
-#include "MainScence.hpp"
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-#include "AgentManager.h"
-using namespace anysdk::framework;
-#endif
+#include "HelloWorldScene.h"
+
 USING_NS_CC;
 
 AppDelegate::AppDelegate() {
@@ -12,9 +9,6 @@ AppDelegate::AppDelegate() {
 
 AppDelegate::~AppDelegate() 
 {
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    AgentManager::getInstance()->unloadAllPlugins();
-#endif
 }
 
 //if you want a different context,just modify the value of glContextAttrs
@@ -29,34 +23,15 @@ void AppDelegate::initGLContextAttrs()
 }
 
 bool AppDelegate::applicationDidFinishLaunching() {
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    /**
-     * appKey、appSecret、privateKey需要从打包工具中游戏管理界面获取，替换
-     * oauthLoginServer参数是游戏服务提供的用来做登陆验证转发的接口地址。
-     */
-    std::string oauthLoginServer = "OAUTH_LOGIN_SERVER";
-    std::string appKey = "APP_KEY";
-    std::string appSecret = "APP_SERCRET";
-    std::string privateKey = "PRIVATE_KEY";
-    
-    AgentManager* pAgent = AgentManager::getInstance();
-    pAgent->init(appKey,appSecret,privateKey,oauthLoginServer);
-    
-    //使用框架中代理类进行插件初始化
-    pAgent->loadAllPlugins();
-#endif
     // initialize director
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
-    
-    Size screenSize = director->getVisibleSize();
-    
     if(!glview) {
-        glview = GLViewImpl::createWithRect("HelloCpp", Rect(0, 0, screenSize.width, screenSize.height));
+        glview = GLViewImpl::createWithRect("MakaPopStar", Rect(0, 0, 960, 640));
         director->setOpenGLView(glview);
     }
 
-    director->getOpenGLView()->setDesignResolutionSize(screenSize.width, screenSize.height, ResolutionPolicy::SHOW_ALL);
+    director->getOpenGLView()->setDesignResolutionSize(960, 640, ResolutionPolicy::SHOW_ALL);
 
     // turn on display FPS
     director->setDisplayStats(true);

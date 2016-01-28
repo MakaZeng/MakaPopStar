@@ -3,17 +3,13 @@
 #include "ui/CocosGUI.h"
 
 USING_NS_CC;
-using namespace cocos2d::extension;
 
 using namespace cocostudio::timeline;
 
 Scene* HelloWorld::createScene()
 {
-    
     // 'scene' is an autorelease object
-    auto scene = Scene::createWithPhysics();
-    scene->getPhysicsWorld()->setGravity(Vec2(0, 0));
-//    scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+    auto scene = Scene::create();
     
     // 'layer' is an autorelease object
     auto layer = HelloWorld::create();
@@ -28,113 +24,69 @@ Scene* HelloWorld::createScene()
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
 {
+    /**  you can create scene with following comment code instead of using csb file.
+    // 1. super init first
     if ( !Layer::init() )
     {
         return false;
     }
     
     Size visibleSize = Director::getInstance()->getVisibleSize();
+    Vec2 origin = Director::getInstance()->getVisibleOrigin();
+
+    /////////////////////////////
+    // 2. add a menu item with "X" image, which is clicked to quit the program
+    //    you may modify it.
+
+    // add a "close" icon to exit the progress. it's an autorelease object
+    auto closeItem = MenuItemImage::create(
+                                           "CloseNormal.png",
+                                           "CloseSelected.png",
+                                           CC_CALLBACK_1(HelloWorld::menuCloseCallback, this));
     
-    auto body = PhysicsBody::createEdgeBox(visibleSize,PHYSICSBODY_MATERIAL_DEFAULT,3);
-    auto edgeNode = Node::create();
-    edgeNode->setPosition(Point(visibleSize.width/2,visibleSize.height/2));
-    edgeNode->setPhysicsBody(body);
-    addChild(edgeNode);
+	closeItem->setPosition(Vec2(origin.x + visibleSize.width - closeItem->getContentSize().width/2 ,
+                                origin.y + closeItem->getContentSize().height/2));
+
+    // create menu, it's an autorelease object
+    auto menu = Menu::create(closeItem, NULL);
+    menu->setPosition(Vec2::ZERO);
+    this->addChild(menu, 1);
+
+    /////////////////////////////
+    // 3. add your codes below...
+
+    // add a label shows "Hello World"
+    // create and initialize a label
     
+    auto label = Label::createWithTTF("Hello World", "fonts/Marker Felt.ttf", 24);
     
-    auto backLayer = LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height);
-    addChild(backLayer);
+    // position the label on the center of the screen
+    label->setPosition(Vec2(origin.x + visibleSize.width/2,
+                            origin.y + visibleSize.height - label->getContentSize().height));
+
+    // add the label as a child to this layer
+    this->addChild(label, 1);
+
+    // add "HelloWorld" splash screen"
+    auto sprite = Sprite::create("HelloWorld.png");
+
+    // position the sprite on the center of the screen
+    sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+
+    // add the sprite as a child to this layer
+    this->addChild(sprite, 0);
+    **/
     
-    CocosDenshion::SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(MUSIC_FILE);
-    
-    //设置默认音量
-    
-    CocosDenshion::SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0.03);
-    
-    Sprite* backImage = Sprite::create("sky.jpg");
-    backImage->setPosition(Point(backImage->getContentSize().width/2,backImage->getContentSize().height/2));
-    addChild(backImage);
-    
-    containerLayer = Layer::create();
-    containerLayer->setPosition(0, 80);
-    Size containerSize = containerLayer->getContentSize();
-    auto containerBody = PhysicsBody::createEdgeBox(containerSize,PHYSICSBODY_MATERIAL_DEFAULT,3);
-    auto containerEdgeNode = Node::create();
-    containerEdgeNode->setPosition(Point(visibleSize.width/2,visibleSize.height/2));
-    containerEdgeNode->setPhysicsBody(containerBody);
-    addChild(containerEdgeNode);
-    
-    addChild(containerLayer);
-    
-    manager->initStars();
-    
-    engine->layoutStarsWithDataSourceAndLayer(manager->dataSource, containerLayer);
+    //////////////////////////////
+    // 1. super init first
+    if ( !Layer::init() )
     {
-        auto listener1 = EventListenerTouchOneByOne::create();
-        listener1->setSwallowTouches(true);
-        listener1->onTouchBegan = [this](Touch* touch, Event* event){
-            // 获取事件所绑定的 target
-            auto target = static_cast<Sprite*>(event->getCurrentTarget());
-            
-            // 获取当前点击点所在相对按钮的位置坐标
-            Point locationInNode = target->convertToNodeSpace(touch->getLocation());
-            Size s = target->getContentSize();
-            Rect rect = Rect(0, 0, s.width, s.height);
-            
-            // 点击范围判断检测
-            if (rect.containsPoint(locationInNode))
-            {
-                this->touchPoint(locationInNode);
-                return true;
-            }
-            return false;
-        };
-        
-        // 触摸移动时触发
-        listener1->onTouchMoved = [](Touch* touch, Event* event){};
-        
-        // 点击事件结束处理
-        listener1->onTouchEnded = [](Touch* touch, Event* event){};
-        _eventDispatcher->addEventListenerWithSceneGraphPriority(listener1, containerLayer);
+        return false;
     }
+    
+    auto rootNode = CSLoader::createNode("MainScene.csb");
+
+    addChild(rootNode);
 
     return true;
 }
-
-void HelloWorld::touchPoint(Point point)
-{
-    static bool lock = false;
-    
-    if (lock) {
-        return;
-    }
-    lock = true;
-    Point modelPoint = engine->getClickStarModelPointWith(point);
-    StarModel* model = manager->getModelForLineAndRow(modelPoint.x, modelPoint.y);
-    if (model!=NULL) {
-        CCArray* list = manager->getSameColorStarsWithStar(model);
-        for(int i = 0 ; i< list->count() ; i++)
-        {
-            StarModel* s = (StarModel*)list->objectAtIndex(i);
-            log("%d,%d,%p",s->line,s->row,s);
-        }
-        if (list->count() >= 2) {
-            CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic(MUSIC_FILE,false);
-        }
-        manager->destroyStars(list);
-        engine->removeStars(list);
-        scheduleOnce([this](float){
-            engine->relayout(manager->dataSource);
-        }, 0.2*list->count(), "pop");
-    }
-    
-    if (manager->checkDeath()) {
-        manager->initStars();
-        engine->layoutStarsWithDataSourceAndLayer(manager->dataSource, containerLayer);
-    }
-    
-    scheduleOnce([](float){
-        lock = false;
-    }, 0.5, "key");
-}
-

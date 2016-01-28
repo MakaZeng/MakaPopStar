@@ -1,11 +1,10 @@
 <Solution>
-  <PropertyGroup Name="MakaPopStar" Version="3.10.0.0" Type="CocosStudio" />
+  <PropertyGroup Name="MakaPopStar" Version="2.1.0.0" Type="CocosStudio" />
   <SolutionFolder>
     <Group ctype="ResourceGroup">
       <RootFolder Name=".">
-        <Image Name="mainScence_Logo.png" />
-        <Project Name="MainScene.csd" Type="Scene" />
-        <Image Name="sky.jpg" />
+        <Project Name="MainScene.csd" />
+        <Image Name="HelloWorld.png" />
       </RootFolder>
     </Group>
   </SolutionFolder>

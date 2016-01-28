@@ -16,13 +16,11 @@ USING_NS_CC;
 class ScreenUtil : public cocos2d::Ref {
     
 public:
-    static Size getBestScreenSize();
-};
-
-Size ScreenUtil::getBestScreenSize()
-{
-    Size size = Director::getInstance()->getVisibleSize();
-    return size;
+    static inline Size getBestScreenSize()
+    {
+        Size size = Director::getInstance()->getVisibleSize();
+        return size;
+    }
 };
 
 
