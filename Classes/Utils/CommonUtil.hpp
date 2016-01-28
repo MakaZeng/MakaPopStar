@@ -142,6 +142,20 @@ public:
     static float getScaleForTargetWithCurrent(float t , float c){
         return t/c;
     }
+    
+    static Layer* createToolBarForWidthAndHeight(float width , float height)
+    {
+        Layer* layer = Layer::create();
+        
+        layer->setContentSize(Size(width, height));
+        
+        Sprite* sp = Sprite::create("backImage.png");
+        sp->setScale(width/5, height/5);
+        sp->cocos2d::Node::setAnchorPoint(Point(0,0));
+        layer->addChild(sp);
+        return layer;
+    }
+    
 };
 
 #endif /* CommonUtil_hpp */

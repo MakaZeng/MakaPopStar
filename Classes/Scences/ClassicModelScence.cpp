@@ -34,6 +34,14 @@ bool ClassicModelScence::init()
     
     Size contentSize = ScreenUtil::getBestScreenSize();
     
+    Layer* toolBar = CommonUtil::createToolBarForWidthAndHeight(contentSize.width, contentSize.height);
+    
+    toolBar->setAnchorPoint(Point(0,0));
+    
+    toolBar->setPosition(Point(0,0));
+    
+    addChild(toolBar);
+    
     Layer* starsContainer = Layer::create();
     
     float padding = 40;
@@ -53,6 +61,8 @@ bool ClassicModelScence::init()
     LayoutEngine* engine = new LayoutEngine();
     
     engine->layoutStarsWithDataSourceAndLayer(core->dataSource, starsContainer);
+    
+    
     
     return true;
 }
