@@ -78,7 +78,7 @@ bool ClassicModelScence::init()
                 engine->removeStars(arr);
                 starsContainer->scheduleOnce([engine,core](float dt){
                     engine->relayout(core->dataSource);
-                }, .2*arr->count() > 1.6 ? 1.6 :.2*arr->count(), "pop");
+                }, .2*arr->count() > 10 ? 10 :.2*arr->count(), "pop");
             }
         }
         return false;

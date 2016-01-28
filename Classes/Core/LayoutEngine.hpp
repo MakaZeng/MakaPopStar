@@ -134,10 +134,10 @@ public:
             
             containerLayer->scheduleOnce([sp,i](float dt){
                 sp->removeFromParent();
-                if (i<=8) {
-                    CommonUtil::playSoundWithName(__String::create("pop"),0.8,0.5+i/16.0);
+                if (i<=50) {
+                    CommonUtil::playSoundWithName(__String::create("pop"),0.8,0.8+i/16.0>1.5?1.5:0.8+i/16.0);
                 }
-            }, .2*i > 1.6 ? 1.6 :.2*i, __String::createWithFormat("random%d",i)->getCString());
+            }, .2*i > 10 ? 10 :.2*i, __String::createWithFormat("random%d",i)->getCString());
             
             removeNodeForModel(model);
         }
