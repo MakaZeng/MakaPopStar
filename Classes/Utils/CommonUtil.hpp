@@ -32,7 +32,7 @@ public:
         __String* fileName = __String::createWithFormat("%s.%s",name->getCString(),MUSIC_FILE_TYPE);
         SimpleAudioEngine::getInstance()->playBackgroundMusic(fileName->getCString(),false);
     }
-    static inline ParticleSystem* getParticleSystemForImageNameAndLayer(__String* imageName,Layer* layer)
+    static inline ParticleSystem* getParticleSystemForImageNameAndLayer(__String* imageName)
     {
         ParticleSystem * p6=ParticleExplosion::create();
         p6->setTexture(Director::getInstance()->getTextureCache()->addImage(imageName->getCString()));
@@ -81,18 +81,47 @@ public:
         
         return backImage;
     }
-    static Sprite* runRoundSpriteWithImageName(__String* imageName)
+    static Sprite* runRoundSpriteWithImageName(__String* imageName , float time)
     {
         Sprite* image = Sprite::create(imageName->getCString());
-        image->setScale(2);
-        ActionInterval * rotate = RotateTo::create(20,180);
-        ActionInterval * rotate2 = RotateTo::create(20,360);
+        ActionInterval * rotate = RotateTo::create(time/2,180);
+        ActionInterval * rotate2 = RotateTo::create(time/2,360);
         FiniteTimeAction* seq = Sequence::create(rotate,rotate2,NULL);
         ActionInterval * repeatForever =RepeatForever::create((ActionInterval* )seq);
         image->runAction(repeatForever);
         
         return image;
     }
+    static Sprite* moveUp(float offset , Point start , __String* imageName , float time)
+    {
+        Sprite* image = Sprite::create(imageName->getCString());
+        
+        image->setScale(.2);
+        
+        image->setPosition(start);
+        
+        ActionInterval * move = MoveTo::create(time,Vec2(start.x, start.y+offset));
+        image->runAction(move);
+        
+        return image;
+    }
+    
+    static void addRepeatForeverShake(Sprite* sp){
+        ActionInterval * rotate = RotateTo::create(.1,10);
+        ActionInterval * rotate2 = RotateTo::create(.2,-10);
+        ActionInterval * rotate3 = RotateTo::create(.1,0);
+        ActionInterval * sleep = RotateTo::create(5,0);
+        FiniteTimeAction* seq = Sequence::create(rotate,rotate2,rotate3,rotate,rotate2,rotate3,sleep,NULL);
+        ActionInterval * repeatForever =RepeatForever::create((ActionInterval* )seq);
+        sp->runAction(repeatForever);
+    }
+    
+    static void addEaseZoonIn(Sprite* sp){
+        sp->setScale(.1);
+        ActionInterval * scaleby = ScaleTo::create(1, 1);
+        sp->runAction(scaleby);
+    }
+    
 };
 
 #endif /* CommonUtil_hpp */

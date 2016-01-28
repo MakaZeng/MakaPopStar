@@ -36,13 +36,59 @@ bool MainScence::init()
         return false;
     }
     
+    Size contentSize = this->getContentSize();
+    
     __String* pointer = __String::create("sky.jpg");
     
-    Sprite* sp = CommonUtil::runRoundSpriteWithImageName(pointer);
+    Sprite* sp = CommonUtil::runRoundSpriteWithImageName(pointer,40);
     
-    sp->setPosition(Point(this->getContentSize().width/2,this->getContentSize().height/2));
+    sp->setPosition(Point(contentSize.width/2,contentSize.height/2));
     
     addChild(sp);
     
+    pointer = __String::create("image_00.png");
+    sp = CommonUtil::moveUp(100, Point(contentSize.width/2,contentSize.height - 300), pointer, 1);
+    addChild(sp);
+    CommonUtil::addRepeatForeverShake(sp);
+    
+    
+    sp = CommonUtil::moveUp(100, Point(contentSize.width/2,contentSize.height - 500), pointer, 1);
+    
+    CommonUtil::addEaseZoonIn(sp);
+    addChild(sp);
+    
+    this->scheduleUpdate();
+    
     return true;
+}
+
+void MainScence::update(float dt)
+{
+    
+    static long count = 0;
+    count ++;
+    
+    int rule = 2;
+    
+    if (count>100) {
+        rule = 4;
+    }if (count > 100 && count < 1000) {
+        rule = 10;
+    }else {
+        rule = 30;
+    }
+    
+    if (count%rule != 0) {
+        return;
+    }
+    
+    Size contentSize = this->getContentSize();
+    
+    __String* pointer = __String::create("image_00.png");
+    
+    ParticleSystem* s = CommonUtil::getParticleSystemForImageNameAndLayer(pointer);
+    
+    s->setPosition(rand()%(int)contentSize.width,rand()%(int)contentSize.height);
+    
+    addChild(s);
 }

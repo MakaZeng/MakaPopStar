@@ -24,6 +24,8 @@ public:
     
     // implement the "static create()" method manually
     CREATE_FUNC(MainScence);
+    
+    void update(float dt);
 };
 
 
