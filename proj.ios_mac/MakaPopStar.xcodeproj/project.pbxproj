@@ -42,8 +42,6 @@
 		24711BBE1C59F4DE00BB6001 /* tap.wav in Resources */ = {isa = PBXBuildFile; fileRef = 24711BAC1C59F4DE00BB6001 /* tap.wav */; };
 		24711BC31C59F52400BB6001 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 24711BBF1C59F52400BB6001 /* AppDelegate.cpp */; };
 		24711BC41C59F52400BB6001 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 24711BBF1C59F52400BB6001 /* AppDelegate.cpp */; };
-		24711BC51C59F52400BB6001 /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 24711BC11C59F52400BB6001 /* HelloWorldScene.cpp */; };
-		24711BC61C59F52400BB6001 /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 24711BC11C59F52400BB6001 /* HelloWorldScene.cpp */; };
 		24711BC81C59F57800BB6001 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24711BC71C59F57800BB6001 /* Images.xcassets */; };
 		24711BC91C59F57800BB6001 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24711BC71C59F57800BB6001 /* Images.xcassets */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
@@ -121,8 +119,6 @@
 		24711BAC1C59F4DE00BB6001 /* tap.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tap.wav; sourceTree = "<group>"; };
 		24711BBF1C59F52400BB6001 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		24711BC01C59F52400BB6001 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		24711BC11C59F52400BB6001 /* HelloWorldScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HelloWorldScene.cpp; sourceTree = "<group>"; };
-		24711BC21C59F52400BB6001 /* HelloWorldScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloWorldScene.h; sourceTree = "<group>"; };
 		24711BC71C59F57800BB6001 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		503AE0F617EB97AB00D1A890 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
@@ -336,8 +332,6 @@
 			children = (
 				24711BBF1C59F52400BB6001 /* AppDelegate.cpp */,
 				24711BC01C59F52400BB6001 /* AppDelegate.h */,
-				24711BC11C59F52400BB6001 /* HelloWorldScene.cpp */,
-				24711BC21C59F52400BB6001 /* HelloWorldScene.h */,
 				24711B921C59F49600BB6001 /* Core */,
 				24711B841C59F47D00BB6001 /* Scences */,
 				24711B871C59F47D00BB6001 /* Utils */,
@@ -545,7 +539,6 @@
 				24711B8C1C59F47D00BB6001 /* MainScence.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				24711B901C59F47D00BB6001 /* ScreenUtil.cpp in Sources */,
-				24711BC51C59F52400BB6001 /* HelloWorldScene.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				24711B8E1C59F47D00BB6001 /* CommonUtil.cpp in Sources */,
 				24711B951C59F49C00BB6001 /* LayoutEngine.cpp in Sources */,
@@ -562,7 +555,6 @@
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				24711BC41C59F52400BB6001 /* AppDelegate.cpp in Sources */,
 				24711B961C59F49C00BB6001 /* LayoutEngine.cpp in Sources */,
-				24711BC61C59F52400BB6001 /* HelloWorldScene.cpp in Sources */,
 				24711B911C59F47D00BB6001 /* ScreenUtil.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

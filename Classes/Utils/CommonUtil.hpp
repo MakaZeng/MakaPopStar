@@ -57,12 +57,41 @@ public:
     static inline Sprite* getBackSpriteForImageNameAndLayer(__String* imageName , Layer* layer)
     {
         Size contentSize = layer->getContentSize();
+        
+        if (contentSize.width/contentSize.height > contentSize.height/contentSize.width) {
+            //替换成对应的横屏图
+        }
+        
         Sprite* backImage = Sprite::create(imageName->getCString());
         
-        backImage->setScaleX(.5);
-        backImage->setScaleY(.5);
+        backImage->setAnchorPoint(Point(0,0));
+        
+        Size textureSize = backImage->getTextureRect().size;
+        
+        float scale;
+        
+        if (contentSize.width/contentSize.height < textureSize.width/textureSize.height) {
+            scale = contentSize.height/textureSize.height;
+        }else {
+            scale = contentSize.width/textureSize.width;
+        }
+
+        backImage->setScaleX(scale);
+        backImage->setScaleY(scale);
         
         return backImage;
+    }
+    static Sprite* runRoundSpriteWithImageName(__String* imageName)
+    {
+        Sprite* image = Sprite::create(imageName->getCString());
+        image->setScale(2);
+        ActionInterval * rotate = RotateTo::create(20,180);
+        ActionInterval * rotate2 = RotateTo::create(20,360);
+        FiniteTimeAction* seq = Sequence::create(rotate,rotate2,NULL);
+        ActionInterval * repeatForever =RepeatForever::create((ActionInterval* )seq);
+        image->runAction(repeatForever);
+        
+        return image;
     }
 };
 

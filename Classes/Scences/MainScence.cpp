@@ -36,11 +36,11 @@ bool MainScence::init()
         return false;
     }
     
-    
-    
     __String* pointer = __String::create("sky.jpg");
     
-    Sprite* sp = CommonUtil::getBackSpriteForImageNameAndLayer(pointer, this);
+    Sprite* sp = CommonUtil::runRoundSpriteWithImageName(pointer);
+    
+    sp->setPosition(Point(this->getContentSize().width/2,this->getContentSize().height/2));
     
     addChild(sp);
     

@@ -1,5 +1,6 @@
 #include "AppDelegate.h"
-#include "HelloWorldScene.h"
+#include "MainScence.hpp"
+#include "ScreenUtil.hpp"
 
 USING_NS_CC;
 
@@ -24,14 +25,17 @@ void AppDelegate::initGLContextAttrs()
 
 bool AppDelegate::applicationDidFinishLaunching() {
     // initialize director
+    
+    Size screenSize = ScreenUtil::getBestScreenSize();
+    
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
     if(!glview) {
-        glview = GLViewImpl::createWithRect("MakaPopStar", Rect(0, 0, 960, 640));
+        glview = GLViewImpl::createWithRect("MakaPopStar", Rect(0, 0, screenSize.width, screenSize.height));
         director->setOpenGLView(glview);
     }
 
-    director->getOpenGLView()->setDesignResolutionSize(960, 640, ResolutionPolicy::SHOW_ALL);
+    director->getOpenGLView()->setDesignResolutionSize(screenSize.width, screenSize.height, ResolutionPolicy::SHOW_ALL);
 
     // turn on display FPS
     director->setDisplayStats(true);
@@ -42,7 +46,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     FileUtils::getInstance()->addSearchPath("res");
 
     // create a scene. it's an autorelease object
-    auto scene = HelloWorld::createScene();
+    auto scene = MainScence::createScene();
 
     // run
     director->runWithScene(scene);
