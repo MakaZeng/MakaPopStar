@@ -23,6 +23,7 @@
 
 using namespace CocosDenshion;
 USING_NS_CC;
+using namespace cocos2d::ui;
 
 class CommonUtil : public Ref {
     
@@ -120,6 +121,15 @@ public:
         sp->setScale(.1);
         ActionInterval * scaleby = ScaleTo::create(1, 1);
         sp->runAction(scaleby);
+    }
+    
+    static Button* buttonForBackImageAndContent(__String* imageName,__String* content)
+    {
+        Button* buttonPlay = Button::create();
+        buttonPlay->setTouchEnabled(true);
+        buttonPlay->setTitleText(content->getCString());
+        buttonPlay->loadTextures(imageName->getCString(), imageName->getCString(), "");
+        return buttonPlay;
     }
     
 };

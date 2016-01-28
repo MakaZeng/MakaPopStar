@@ -91,4 +91,11 @@ void MainScence::update(float dt)
     s->setPosition(rand()%(int)contentSize.width,rand()%(int)contentSize.height);
     
     addChild(s);
+    
+    
+    pointer = __String::create("Red_button_back.png");
+    Button* btn = CommonUtil::buttonForBackImageAndContent(pointer, __String::create("Play"));
+    btn->setContentSize(Size(100, 50));
+    btn->setPosition(Point(contentSize.width/2,50));
+    addChild(btn);
 }

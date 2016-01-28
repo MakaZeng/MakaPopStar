@@ -44,6 +44,8 @@
 		24711BC41C59F52400BB6001 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 24711BBF1C59F52400BB6001 /* AppDelegate.cpp */; };
 		24711BC81C59F57800BB6001 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24711BC71C59F57800BB6001 /* Images.xcassets */; };
 		24711BC91C59F57800BB6001 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24711BC71C59F57800BB6001 /* Images.xcassets */; };
+		2481B9831C5A19DD002F9540 /* Red_button_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 2481B9821C5A19DD002F9540 /* Red_button_back.png */; };
+		2481B9841C5A19DD002F9540 /* Red_button_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 2481B9821C5A19DD002F9540 /* Red_button_back.png */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		2D8E4310A2E154128CD9AB6F /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51554DA9A2FA70F46AF9E679 /* libcocos2d Mac.a */; };
 		503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 503AE0F617EB97AB00D1A890 /* Icon.icns */; };
@@ -120,6 +122,7 @@
 		24711BBF1C59F52400BB6001 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		24711BC01C59F52400BB6001 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		24711BC71C59F57800BB6001 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		2481B9821C5A19DD002F9540 /* Red_button_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Red_button_back.png; sourceTree = "<group>"; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		503AE0F617EB97AB00D1A890 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
 		503AE0F717EB97AB00D1A890 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -310,6 +313,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2481B9821C5A19DD002F9540 /* Red_button_back.png */,
 				24711BC71C59F57800BB6001 /* Images.xcassets */,
 				24711BA41C59F4DE00BB6001 /* image_00.png */,
 				24711BA51C59F4DE00BB6001 /* image_01.png */,
@@ -481,6 +485,7 @@
 				24711BBB1C59F4DE00BB6001 /* sky.jpg in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				24711BB71C59F4DE00BB6001 /* image_05.png in Resources */,
+				2481B9831C5A19DD002F9540 /* Red_button_back.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
@@ -518,6 +523,7 @@
 				24711BB41C59F4DE00BB6001 /* image_03.png in Resources */,
 				24711BB01C59F4DE00BB6001 /* image_01.png in Resources */,
 				24711BB21C59F4DE00BB6001 /* image_02.png in Resources */,
+				2481B9841C5A19DD002F9540 /* Red_button_back.png in Resources */,
 				24711BB61C59F4DE00BB6001 /* image_04.png in Resources */,
 				24711BBA1C59F4DE00BB6001 /* ParticleStar.png in Resources */,
 				6CC743B7AEC6C4A1F5FEC304 /* res in Resources */,
