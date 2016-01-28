@@ -16,10 +16,6 @@
 		24711B8F1C59F47D00BB6001 /* CommonUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 24711B881C59F47D00BB6001 /* CommonUtil.cpp */; };
 		24711B901C59F47D00BB6001 /* ScreenUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 24711B8A1C59F47D00BB6001 /* ScreenUtil.cpp */; };
 		24711B911C59F47D00BB6001 /* ScreenUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 24711B8A1C59F47D00BB6001 /* ScreenUtil.cpp */; };
-		24711B951C59F49C00BB6001 /* LayoutEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 24711B931C59F49C00BB6001 /* LayoutEngine.cpp */; };
-		24711B961C59F49C00BB6001 /* LayoutEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 24711B931C59F49C00BB6001 /* LayoutEngine.cpp */; };
-		24711B971C59F49C00BB6001 /* PopStarCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 24711B941C59F49C00BB6001 /* PopStarCore.cpp */; };
-		24711B981C59F49C00BB6001 /* PopStarCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 24711B941C59F49C00BB6001 /* PopStarCore.cpp */; };
 		24711BA21C59F4C500BB6001 /* icon_popstar.pxm in Resources */ = {isa = PBXBuildFile; fileRef = 24711BA11C59F4C500BB6001 /* icon_popstar.pxm */; };
 		24711BA31C59F4C500BB6001 /* icon_popstar.pxm in Resources */ = {isa = PBXBuildFile; fileRef = 24711BA11C59F4C500BB6001 /* icon_popstar.pxm */; };
 		24711BAD1C59F4DE00BB6001 /* image_00.png in Resources */ = {isa = PBXBuildFile; fileRef = 24711BA41C59F4DE00BB6001 /* image_00.png */; };
@@ -46,6 +42,12 @@
 		24711BC91C59F57800BB6001 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24711BC71C59F57800BB6001 /* Images.xcassets */; };
 		2481B9831C5A19DD002F9540 /* Red_button_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 2481B9821C5A19DD002F9540 /* Red_button_back.png */; };
 		2481B9841C5A19DD002F9540 /* Red_button_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 2481B9821C5A19DD002F9540 /* Red_button_back.png */; };
+		2481B9871C5A2037002F9540 /* ClassicModelScence.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2481B9851C5A2037002F9540 /* ClassicModelScence.cpp */; };
+		2481B9881C5A2037002F9540 /* ClassicModelScence.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2481B9851C5A2037002F9540 /* ClassicModelScence.cpp */; };
+		2481B98B1C5A22F3002F9540 /* PopStarCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2481B9891C5A22F3002F9540 /* PopStarCore.cpp */; };
+		2481B98C1C5A22F3002F9540 /* PopStarCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2481B9891C5A22F3002F9540 /* PopStarCore.cpp */; };
+		2481B98F1C5A2326002F9540 /* LayoutEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2481B98D1C5A2326002F9540 /* LayoutEngine.cpp */; };
+		2481B9901C5A2326002F9540 /* LayoutEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2481B98D1C5A2326002F9540 /* LayoutEngine.cpp */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		2D8E4310A2E154128CD9AB6F /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51554DA9A2FA70F46AF9E679 /* libcocos2d Mac.a */; };
 		503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 503AE0F617EB97AB00D1A890 /* Icon.icns */; };
@@ -107,8 +109,6 @@
 		24711B891C59F47D00BB6001 /* CommonUtil.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CommonUtil.hpp; sourceTree = "<group>"; };
 		24711B8A1C59F47D00BB6001 /* ScreenUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScreenUtil.cpp; sourceTree = "<group>"; };
 		24711B8B1C59F47D00BB6001 /* ScreenUtil.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ScreenUtil.hpp; sourceTree = "<group>"; };
-		24711B931C59F49C00BB6001 /* LayoutEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LayoutEngine.cpp; sourceTree = "<group>"; };
-		24711B941C59F49C00BB6001 /* PopStarCore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PopStarCore.cpp; sourceTree = "<group>"; };
 		24711BA11C59F4C500BB6001 /* icon_popstar.pxm */ = {isa = PBXFileReference; lastKnownFileType = file; path = icon_popstar.pxm; sourceTree = "<group>"; };
 		24711BA41C59F4DE00BB6001 /* image_00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_00.png; sourceTree = "<group>"; };
 		24711BA51C59F4DE00BB6001 /* image_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_01.png; sourceTree = "<group>"; };
@@ -123,6 +123,12 @@
 		24711BC01C59F52400BB6001 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		24711BC71C59F57800BB6001 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2481B9821C5A19DD002F9540 /* Red_button_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Red_button_back.png; sourceTree = "<group>"; };
+		2481B9851C5A2037002F9540 /* ClassicModelScence.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClassicModelScence.cpp; sourceTree = "<group>"; };
+		2481B9861C5A2037002F9540 /* ClassicModelScence.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ClassicModelScence.hpp; sourceTree = "<group>"; };
+		2481B9891C5A22F3002F9540 /* PopStarCore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PopStarCore.cpp; sourceTree = "<group>"; };
+		2481B98A1C5A22F3002F9540 /* PopStarCore.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PopStarCore.hpp; sourceTree = "<group>"; };
+		2481B98D1C5A2326002F9540 /* LayoutEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LayoutEngine.cpp; sourceTree = "<group>"; };
+		2481B98E1C5A2326002F9540 /* LayoutEngine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LayoutEngine.hpp; sourceTree = "<group>"; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		503AE0F617EB97AB00D1A890 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
 		503AE0F717EB97AB00D1A890 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -245,6 +251,8 @@
 			children = (
 				24711B851C59F47D00BB6001 /* MainScence.cpp */,
 				24711B861C59F47D00BB6001 /* MainScence.hpp */,
+				2481B9861C5A2037002F9540 /* ClassicModelScence.hpp */,
+				2481B9851C5A2037002F9540 /* ClassicModelScence.cpp */,
 			);
 			path = Scences;
 			sourceTree = "<group>";
@@ -263,8 +271,10 @@
 		24711B921C59F49600BB6001 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				24711B931C59F49C00BB6001 /* LayoutEngine.cpp */,
-				24711B941C59F49C00BB6001 /* PopStarCore.cpp */,
+				2481B9891C5A22F3002F9540 /* PopStarCore.cpp */,
+				2481B98A1C5A22F3002F9540 /* PopStarCore.hpp */,
+				2481B98D1C5A2326002F9540 /* LayoutEngine.cpp */,
+				2481B98E1C5A2326002F9540 /* LayoutEngine.hpp */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -539,15 +549,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24711B971C59F49C00BB6001 /* PopStarCore.cpp in Sources */,
+				2481B9871C5A2037002F9540 /* ClassicModelScence.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				24711BC31C59F52400BB6001 /* AppDelegate.cpp in Sources */,
+				2481B98F1C5A2326002F9540 /* LayoutEngine.cpp in Sources */,
 				24711B8C1C59F47D00BB6001 /* MainScence.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
+				2481B98B1C5A22F3002F9540 /* PopStarCore.cpp in Sources */,
 				24711B901C59F47D00BB6001 /* ScreenUtil.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				24711B8E1C59F47D00BB6001 /* CommonUtil.cpp in Sources */,
-				24711B951C59F49C00BB6001 /* LayoutEngine.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -556,11 +567,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				24711B8F1C59F47D00BB6001 /* CommonUtil.cpp in Sources */,
-				24711B981C59F49C00BB6001 /* PopStarCore.cpp in Sources */,
 				24711B8D1C59F47D00BB6001 /* MainScence.cpp in Sources */,
+				2481B9881C5A2037002F9540 /* ClassicModelScence.cpp in Sources */,
+				2481B98C1C5A22F3002F9540 /* PopStarCore.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
+				2481B9901C5A2326002F9540 /* LayoutEngine.cpp in Sources */,
 				24711BC41C59F52400BB6001 /* AppDelegate.cpp in Sources */,
-				24711B961C59F49C00BB6001 /* LayoutEngine.cpp in Sources */,
 				24711B911C59F47D00BB6001 /* ScreenUtil.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

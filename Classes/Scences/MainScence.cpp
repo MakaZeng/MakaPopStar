@@ -7,6 +7,7 @@
 //
 
 #include "MainScence.hpp"
+#include "ClassicModelScence.hpp"
 
 USING_NS_CC;
 
