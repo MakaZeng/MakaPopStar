@@ -45,7 +45,7 @@ public:
         
         Size contentSize = layer->getContentSize();
         
-        perWidth = contentSize.width/20;
+        perWidth = contentSize.width/10;
         perHeight = perWidth;
         
         CCArray* nameArray = CCArray::create();
