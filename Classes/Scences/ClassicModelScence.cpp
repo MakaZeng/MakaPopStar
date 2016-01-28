@@ -32,6 +32,8 @@ bool ClassicModelScence::init()
         return false;
     }
     
+    SimpleAudioEngine::getInstance()->preloadEffect("pop.wav");
+    
     Size contentSize = ScreenUtil::getBestScreenSize();
     
     Layer* toolBar = CommonUtil::createToolBarForWidthAndHeight(contentSize.width, contentSize.height);
@@ -76,7 +78,7 @@ bool ClassicModelScence::init()
                 engine->removeStars(arr);
                 starsContainer->scheduleOnce([engine,core](float dt){
                     engine->relayout(core->dataSource);
-                }, .1*arr->count() > 2 ? 2 :.1*arr->count(), "pop");
+                }, .2*arr->count() > 1.6 ? 1.6 :.2*arr->count(), "pop");
             }
         }
         return false;

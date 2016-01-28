@@ -28,10 +28,11 @@ using namespace cocos2d::ui;
 class CommonUtil : public Ref {
     
 public:
-    static inline void playSoundWithName(__String* name)
+    static inline void playSoundWithName(__String* name,float volume,float pitch)
     {
         __String* fileName = __String::createWithFormat("%s.%s",name->getCString(),MUSIC_FILE_TYPE);
-        SimpleAudioEngine::getInstance()->playBackgroundMusic(fileName->getCString(),false);
+        SimpleAudioEngine::getInstance()->setEffectsVolume(volume);
+        SimpleAudioEngine::getInstance()->playEffect(fileName->getCString(),false,pitch);
     }
     static inline ParticleSystem* getParticleSystemForImageNameAndLayer(__String* imageName)
     {

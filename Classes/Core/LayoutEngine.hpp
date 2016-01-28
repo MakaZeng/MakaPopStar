@@ -130,9 +130,14 @@ public:
         {
             StarModel* model = (StarModel*)stars->objectAtIndex(i);
             Sprite* sp = getRelatedSpriteWith(model);
-            containerLayer->scheduleOnce([sp](float dt){
+            
+            
+            containerLayer->scheduleOnce([sp,i](float dt){
                 sp->removeFromParent();
-            }, .1*i > 2 ? 2 :.1*i, __String::createWithFormat("random%d",i)->getCString());
+                if (i<=8) {
+                    CommonUtil::playSoundWithName(__String::create("pop"),0.5,1+i/16);
+                }
+            }, .2*i > 1.6 ? 1.6 :.2*i, __String::createWithFormat("random%d",i)->getCString());
             
             removeNodeForModel(model);
         }
