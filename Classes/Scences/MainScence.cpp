@@ -106,5 +106,6 @@ void MainScence::update(float dt)
 
 void MainScence::switchToClassicMode()
 {
-    
+    auto s = ClassicModelScence::createScene();
+    Director::getInstance()->replaceScene(s);
 }

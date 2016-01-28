@@ -7,8 +7,6 @@
 //
 
 #include "ClassicModelScence.hpp"
-#include "LayoutEngine.hpp"
-#include "PopStarCore.hpp"
 
 Scene* ClassicModelScence::createScene()
 {
@@ -34,7 +32,13 @@ bool ClassicModelScence::init()
         return false;
     }
     
+    MatrixManager* core = new MatrixManager();
     
+    core->initStars();
+    
+    LayoutEngine* engine = new LayoutEngine();
+    
+    engine->layoutStarsWithDataSourceAndLayer(core->dataSource, this);
     
     return true;
 }

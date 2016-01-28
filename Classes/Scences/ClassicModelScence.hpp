@@ -11,6 +11,8 @@
 
 #include <stdio.h>
 #include <cocos2d.h>
+#include "LayoutEngine.hpp"
+#include "PopStarCore.hpp"
 
 USING_NS_CC;
 
