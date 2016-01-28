@@ -74,7 +74,7 @@ bool ClassicModelScence::init()
                 CCArray* arr = core->getSameColorStarsWithStar(model);
                 core->destroyStars(arr);
                 engine->removeStars(arr);
-                starsContainer->scheduleOnce([](float dt){
+                starsContainer->scheduleOnce([engine,core](float dt){
                     engine->relayout(core->dataSource);
                 }, .1*arr->count(), "pop");
             }
