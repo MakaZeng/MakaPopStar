@@ -123,6 +123,8 @@
 		60F973811C5A7909005A38E7 /* button_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 60F9737E1C5A7909005A38E7 /* button_gray.png */; };
 		60F973821C5A7909005A38E7 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 60F9737F1C5A7909005A38E7 /* button.png */; };
 		60F973831C5A7909005A38E7 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 60F9737F1C5A7909005A38E7 /* button.png */; };
+		60F973871C5A8331005A38E7 /* CommonScoreManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60F973851C5A8331005A38E7 /* CommonScoreManager.cpp */; };
+		60F973881C5A8331005A38E7 /* CommonScoreManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60F973851C5A8331005A38E7 /* CommonScoreManager.cpp */; };
 		67264650BD08F5A9E8B7ED1D /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D65417CAF89D7ADE4119FEC /* libcocos2d iOS.a */; };
 		6CC743B7AEC6C4A1F5FEC304 /* res in Resources */ = {isa = PBXBuildFile; fileRef = 01F741B993AED8B544209AD5 /* res */; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
@@ -227,6 +229,8 @@
 		60F973611C5A7536005A38E7 /* select.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = select.wav; sourceTree = "<group>"; };
 		60F9737E1C5A7909005A38E7 /* button_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_gray.png; sourceTree = "<group>"; };
 		60F9737F1C5A7909005A38E7 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
+		60F973851C5A8331005A38E7 /* CommonScoreManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CommonScoreManager.cpp; sourceTree = "<group>"; };
+		60F973861C5A8331005A38E7 /* CommonScoreManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CommonScoreManager.hpp; sourceTree = "<group>"; };
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -426,6 +430,7 @@
 			children = (
 				24711BBF1C59F52400BB6001 /* AppDelegate.cpp */,
 				24711BC01C59F52400BB6001 /* AppDelegate.h */,
+				60F973841C5A8303005A38E7 /* Score */,
 				24711B921C59F49600BB6001 /* Core */,
 				24711B841C59F47D00BB6001 /* Scences */,
 				24711B871C59F47D00BB6001 /* Utils */,
@@ -480,6 +485,15 @@
 			name = Icons;
 			path = ios;
 			sourceTree = SOURCE_ROOT;
+		};
+		60F973841C5A8303005A38E7 /* Score */ = {
+			isa = PBXGroup;
+			children = (
+				60F973851C5A8331005A38E7 /* CommonScoreManager.cpp */,
+				60F973861C5A8331005A38E7 /* CommonScoreManager.hpp */,
+			);
+			path = Score;
+			sourceTree = "<group>";
 		};
 		9FB840E18B0F8082A4A0AB3A /* mac-libs */ = {
 			isa = PBXGroup;
@@ -670,6 +684,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2481B9871C5A2037002F9540 /* ClassicModelScence.cpp in Sources */,
+				60F973871C5A8331005A38E7 /* CommonScoreManager.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				24711BC31C59F52400BB6001 /* AppDelegate.cpp in Sources */,
 				2481B98F1C5A2326002F9540 /* LayoutEngine.cpp in Sources */,
@@ -687,6 +702,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				24711B8F1C59F47D00BB6001 /* CommonUtil.cpp in Sources */,
+				60F973881C5A8331005A38E7 /* CommonScoreManager.cpp in Sources */,
 				24711B8D1C59F47D00BB6001 /* MainScence.cpp in Sources */,
 				2481B9881C5A2037002F9540 /* ClassicModelScence.cpp in Sources */,
 				2481B98C1C5A22F3002F9540 /* PopStarCore.cpp in Sources */,
