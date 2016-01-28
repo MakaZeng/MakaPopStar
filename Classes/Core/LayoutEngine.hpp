@@ -130,6 +130,10 @@ public:
         {
             StarModel* model = (StarModel*)stars->objectAtIndex(i);
             Sprite* sp = getRelatedSpriteWith(model);
+            containerLayer->scheduleOnce([sp](float dt){
+                sp->removeFromParent();
+            }, .1*i, __String::createWithFormat("random%d",i)->getCString());
+            
             removeNodeForModel(model);
         }
     }

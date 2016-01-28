@@ -97,8 +97,6 @@ public:
     {
         Sprite* image = Sprite::create(imageName->getCString());
         
-        image->setScale(.2);
-        
         image->setPosition(start);
         
         ActionInterval * move = MoveTo::create(time,Vec2(start.x, start.y+offset));

@@ -60,9 +60,29 @@ bool ClassicModelScence::init()
     
     LayoutEngine* engine = new LayoutEngine();
     
+    engine->retain();
+    
     engine->layoutStarsWithDataSourceAndLayer(core->dataSource, starsContainer);
     
     
+    auto listenter = EventListenerTouchOneByOne::create();
+    listenter->onTouchBegan = [starsContainer,engine,core](Touch* t, Event * e) {
+        if (starsContainer->getBoundingBox().containsPoint(t->getLocation())) {
+            Point p =  engine->getClickStarModelPointWith(t->getLocation());
+            StarModel* model = core->getModelForLineAndRow(p.x, p.y);
+            if (model) {
+                CCArray* arr = core->getSameColorStarsWithStar(model);
+                core->destroyStars(arr);
+                engine->removeStars(arr);
+                starsContainer->scheduleOnce([](float dt){
+                    engine->relayout(core->dataSource);
+                }, .1*arr->count(), "pop");
+            }
+        }
+        return false;
+    };
+    
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listenter, starsContainer);
     
     return true;
 }
