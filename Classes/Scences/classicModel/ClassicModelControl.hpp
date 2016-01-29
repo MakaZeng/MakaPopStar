@@ -85,7 +85,7 @@ public:
     void setTarget(long tar)
     {
         t = tar;
-        level->setString(__String::createWithFormat("目标分数:%ld",t)->getCString());
+        targetScore->setString(__String::createWithFormat("目标分数:%ld",t)->getCString());
     }
     
     void setHigh(long hig)
