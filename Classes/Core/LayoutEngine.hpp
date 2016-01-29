@@ -36,8 +36,12 @@ public:
     
     ClassicModelControl* classicControl;
     
-    
 public:
+    
+    void bindLeftStars()
+    {
+        
+    }
     
     void layoutStarsWithDataSourceAndLayer(CCArray* dataSource , Layer* layer)
     {
@@ -129,6 +133,7 @@ public:
     
     void removeStars(CCArray* stars)
     {
+        containerLayer->unscheduleAllCallbacks();
         steep+=1;
         for(int i = 0 ; i < stars->count() ; i ++)
         {
@@ -137,6 +142,11 @@ public:
             
             
             containerLayer->scheduleOnce([sp,i,this](float dt){
+                
+                if (sp->isRunning()==false) {
+                    return ;
+                }
+                
                 Point p = sp->getPosition();
                 
                 ParticleSystem* ps = CommonUtil::getParticleSystemForImageNameAndLayer(__String::create("star.png"),Color3B::ORANGE,perWidth/2);

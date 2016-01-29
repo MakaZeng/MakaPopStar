@@ -6,11 +6,13 @@
 //
 //
 
+
 #ifndef PopStarCore_hpp
 #define PopStarCore_hpp
 
 #include <stdio.h>
 #include "cocos2d.h"
+#include "ClassicModelScence.hpp"
 
 using namespace cocos2d;
 
@@ -36,6 +38,8 @@ public:
     
     CCArray* checkedBlocks;
     CCArray* blocksInSameColor;
+    
+    ClassicModelScence * classicModeScence;
     
 public:
     
@@ -66,6 +70,10 @@ public:
             int line = model->line;
             CCArray* rowArray = (CCArray*)dataSource->objectAtIndex(line);
             rowArray->removeObject(model);
+        }
+        
+        if (checkDeath()) {
+            classicModeScence->death(2,0);
         }
     }
     
@@ -196,6 +204,5 @@ public:
     }
     
 };
-
 
 #endif /* PopStarCore_hpp */

@@ -7,6 +7,8 @@
 //
 
 #include "ClassicModelScence.hpp"
+#include "LayoutEngine.hpp"
+#include "PopStarCore.hpp"
 
 Scene* ClassicModelScence::createScene()
 {
@@ -36,7 +38,7 @@ bool ClassicModelScence::init()
     
     Size contentSize = ScreenUtil::getBestScreenSize();
     
-    Layer* toolBar = CommonUtil::createToolBarForWidthAndHeight(contentSize.width, contentSize.height);
+    toolBar = CommonUtil::createToolBarForWidthAndHeight(contentSize.width, contentSize.height);
     
     toolBar->setAnchorPoint(Point(0,0));
     
@@ -44,7 +46,7 @@ bool ClassicModelScence::init()
     
     addChild(toolBar);
     
-    Layer* starsContainer = Layer::create();
+    starsContainer = Layer::create();
     
     float padding = 40;
     
@@ -56,14 +58,12 @@ bool ClassicModelScence::init()
     
     addChild(starsContainer);
     
-    MatrixManager* core = new MatrixManager();
-    
+    core = new MatrixManager();
     core->initStars();
+    core->classicModeScence = this;
     
-    LayoutEngine* engine = new LayoutEngine();
-    
+    engine = new LayoutEngine();
     engine->retain();
-    
     engine->layoutStarsWithDataSourceAndLayer(core->dataSource, starsContainer);
     
     this->control = ClassicModelControl::create();
@@ -76,7 +76,7 @@ bool ClassicModelScence::init()
     Size controlSize = control->getContentSize();
     
     auto listenter = EventListenerTouchOneByOne::create();
-    listenter->onTouchBegan = [starsContainer,engine,core,this](Touch* t, Event * e) {
+    listenter->onTouchBegan = [this](Touch* t, Event * e) {
         if (starsContainer->getBoundingBox().containsPoint(t->getLocation())) {
             Point p =  engine->getClickStarModelPointWith(t->getLocation());
             StarModel* model = core->getModelForLineAndRow(p.x, p.y);
@@ -84,8 +84,11 @@ bool ClassicModelScence::init()
                 CCArray* arr = core->getSameColorStarsWithStar(model);
                 core->destroyStars(arr);
                 engine->removeStars(arr);
-                starsContainer->scheduleOnce([engine,core,arr,this](float dt){
+                starsContainer->scheduleOnce([arr,this](float dt){
                     engine->relayout(core->dataSource);
+                    starsContainer->scheduleOnce([this](float dt){
+                        this->death(0,2);
+                    }, 1, "remove");
                 }, .2*arr->count() > 10 ? 10 :.2*arr->count(), "pop");
             }
         }
@@ -97,4 +100,28 @@ bool ClassicModelScence::init()
     addChild(control);
     
     return true;
+}
+
+void ClassicModelScence::death(int lockOne,int lockTwo)
+{
+    static int One = 0;
+    static int Two = 0;
+    if (lockOne > 0) {
+        One = lockOne;
+    }
+    if (One>0 && lockTwo > 0) {
+        Two = lockTwo;
+    }
+    if (One > 1 && Two > 1) {
+        nextLevel();
+        One = 0;
+        Two = 0;
+    }
+}
+
+void ClassicModelScence::nextLevel()
+{
+    core->initStars();
+    starsContainer->removeAllChildren();
+    engine->layoutStarsWithDataSourceAndLayer(core->dataSource, starsContainer);
 }
