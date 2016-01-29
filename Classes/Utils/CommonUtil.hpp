@@ -34,7 +34,7 @@ public:
         SimpleAudioEngine::getInstance()->setEffectsVolume(volume);
         SimpleAudioEngine::getInstance()->playEffect(fileName->getCString(),false,pitch);
     }
-    static inline ParticleSystem* getParticleSystemForImageNameAndLayer(__String* imageName)
+    static inline ParticleSystem* getParticleSystemForImageNameAndLayer(__String* imageName,Color3B color = Color3B::RED   ,float size = 10)
     {
         ParticleSystem * p6=ParticleExplosion::create();
         p6->setTexture(Director::getInstance()->getTextureCache()->addImage(imageName->getCString()));
@@ -43,7 +43,7 @@ public:
         p6->setSpeed(100);
         p6->setSpeedVar(20);
         
-        p6->setStartSize(10);
+        p6->setStartSize(size);
         p6->setStartSizeVar(5);
         p6->setEndSize(5);
         p6->setEndSizeVar(2);
@@ -53,6 +53,8 @@ public:
         p6->setLife(1.5);
         p6->setLifeVar(0.25);
         p6->setEmissionRate(60);
+        
+        p6->setColor(color);
         
         return p6;
     }
@@ -155,6 +157,22 @@ public:
         return layer;
     }
     
+    static Label* createLabelMoveTo(Point f, Point t , __String* text,Layer* container)
+    {
+        Label* label=Label::createWithSystemFont(text->getCString(), "Arial", 50);
+        label->setPosition(f);
+        label->setTextColor(Color4B::WHITE);
+        auto moveTo = MoveTo::create(1, t);
+        label->runAction(moveTo);
+        
+        ActionInterval * hide = FadeOut::create(1);
+        
+        Spawn* seq = Spawn::createWithTwoActions(moveTo, hide);
+        
+        label->runAction(seq);
+        
+        container->addChild(label);
+    }
 };
 
 #endif /* CommonUtil_hpp */

@@ -13,13 +13,13 @@
 #include "PopStarCore.hpp"
 #include "CommonUtil.hpp"
 #include "ScreenUtil.hpp"
+#include "ClassicModelControl.hpp"
 
 class StarNode :public Node {
 public:
     StarModel* model;
     Sprite* sprite;
     Point targetCenter;
-    
 public:
     
 };
@@ -31,8 +31,11 @@ public:
     float perWidth;
     float perHeight;
     CCArray* allNodes;
-    
+    int steep = 0;
     Layer* containerLayer;
+    
+    ClassicModelControl* classicControl;
+    
     
 public:
     
@@ -126,17 +129,35 @@ public:
     
     void removeStars(CCArray* stars)
     {
+        steep+=1;
         for(int i = 0 ; i < stars->count() ; i ++)
         {
             StarModel* model = (StarModel*)stars->objectAtIndex(i);
             Sprite* sp = getRelatedSpriteWith(model);
             
             
-            containerLayer->scheduleOnce([sp,i](float dt){
+            containerLayer->scheduleOnce([sp,i,this](float dt){
+                Point p = sp->getPosition();
+                
+                ParticleSystem* ps = CommonUtil::getParticleSystemForImageNameAndLayer(__String::create("star.png"),Color3B::ORANGE,perWidth/2);
+                
+                ps->setPosition(p);
+                
+                containerLayer->addChild(ps);
+                
                 sp->removeFromParent();
                 if (i<=50) {
                     CommonUtil::playSoundWithName(__String::create("pop"),0.8,0.8+i/16.0>1.5?1.5:0.8+i/16.0);
                 }
+                
+                Point f = Point(p.x,p.y+perHeight);
+                
+                Point t = Point(containerLayer->getContentSize().width/2,containerLayer->getContentSize().height - 100);
+                
+                CommonUtil::createLabelMoveTo(f, t, __String::createWithFormat("%d",i*10+10),containerLayer);
+                
+                classicControl->appendScore(i*10+10);
+                
             }, .2*i > 10 ? 10 :.2*i, __String::createWithFormat("random%d",i)->getCString());
             
             removeNodeForModel(model);
@@ -178,6 +199,7 @@ public:
                 
             }
         }
+        
     }
     
 };

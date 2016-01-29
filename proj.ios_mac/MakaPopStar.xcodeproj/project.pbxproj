@@ -28,6 +28,8 @@
 		2481B98C1C5A22F3002F9540 /* PopStarCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2481B9891C5A22F3002F9540 /* PopStarCore.cpp */; };
 		2481B98F1C5A2326002F9540 /* LayoutEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2481B98D1C5A2326002F9540 /* LayoutEngine.cpp */; };
 		2481B9901C5A2326002F9540 /* LayoutEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2481B98D1C5A2326002F9540 /* LayoutEngine.cpp */; };
+		249C56541C5B1287003122FE /* ClassicModelControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 249C56521C5B1287003122FE /* ClassicModelControl.cpp */; };
+		249C56551C5B1287003122FE /* ClassicModelControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 249C56521C5B1287003122FE /* ClassicModelControl.cpp */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		2D8E4310A2E154128CD9AB6F /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51554DA9A2FA70F46AF9E679 /* libcocos2d Mac.a */; };
 		503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 503AE0F617EB97AB00D1A890 /* Icon.icns */; };
@@ -161,6 +163,8 @@
 		2481B98A1C5A22F3002F9540 /* PopStarCore.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PopStarCore.hpp; sourceTree = "<group>"; };
 		2481B98D1C5A2326002F9540 /* LayoutEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LayoutEngine.cpp; sourceTree = "<group>"; };
 		2481B98E1C5A2326002F9540 /* LayoutEngine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LayoutEngine.hpp; sourceTree = "<group>"; };
+		249C56521C5B1287003122FE /* ClassicModelControl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClassicModelControl.cpp; sourceTree = "<group>"; };
+		249C56531C5B1287003122FE /* ClassicModelControl.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ClassicModelControl.hpp; sourceTree = "<group>"; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		503AE0F617EB97AB00D1A890 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
 		503AE0F717EB97AB00D1A890 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -317,6 +321,7 @@
 				24711B861C59F47D00BB6001 /* MainScence.hpp */,
 				2481B9861C5A2037002F9540 /* ClassicModelScence.hpp */,
 				2481B9851C5A2037002F9540 /* ClassicModelScence.cpp */,
+				249C56511C5B123B003122FE /* classicModel */,
 			);
 			path = Scences;
 			sourceTree = "<group>";
@@ -341,6 +346,15 @@
 				2481B98E1C5A2326002F9540 /* LayoutEngine.hpp */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		249C56511C5B123B003122FE /* classicModel */ = {
+			isa = PBXGroup;
+			children = (
+				249C56521C5B1287003122FE /* ClassicModelControl.cpp */,
+				249C56531C5B1287003122FE /* ClassicModelControl.hpp */,
+			);
+			path = classicModel;
 			sourceTree = "<group>";
 		};
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
@@ -687,6 +701,7 @@
 				60F973871C5A8331005A38E7 /* CommonScoreManager.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				24711BC31C59F52400BB6001 /* AppDelegate.cpp in Sources */,
+				249C56541C5B1287003122FE /* ClassicModelControl.cpp in Sources */,
 				2481B98F1C5A2326002F9540 /* LayoutEngine.cpp in Sources */,
 				24711B8C1C59F47D00BB6001 /* MainScence.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
@@ -701,6 +716,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				249C56551C5B1287003122FE /* ClassicModelControl.cpp in Sources */,
 				24711B8F1C59F47D00BB6001 /* CommonUtil.cpp in Sources */,
 				60F973881C5A8331005A38E7 /* CommonScoreManager.cpp in Sources */,
 				24711B8D1C59F47D00BB6001 /* MainScence.cpp in Sources */,

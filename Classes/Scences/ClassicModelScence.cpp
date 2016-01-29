@@ -66,9 +66,17 @@ bool ClassicModelScence::init()
     
     engine->layoutStarsWithDataSourceAndLayer(core->dataSource, starsContainer);
     
+    this->control = ClassicModelControl::create();
+    control->setContentSize(Size(contentSize.width,100));
+    control->setAnchorPoint(Point(0,0));
+    control->setPosition(Point(0,contentSize.height-100));
+    
+    engine->classicControl = control;
+    
+    Size controlSize = control->getContentSize();
     
     auto listenter = EventListenerTouchOneByOne::create();
-    listenter->onTouchBegan = [starsContainer,engine,core](Touch* t, Event * e) {
+    listenter->onTouchBegan = [starsContainer,engine,core,this](Touch* t, Event * e) {
         if (starsContainer->getBoundingBox().containsPoint(t->getLocation())) {
             Point p =  engine->getClickStarModelPointWith(t->getLocation());
             StarModel* model = core->getModelForLineAndRow(p.x, p.y);
@@ -76,7 +84,7 @@ bool ClassicModelScence::init()
                 CCArray* arr = core->getSameColorStarsWithStar(model);
                 core->destroyStars(arr);
                 engine->removeStars(arr);
-                starsContainer->scheduleOnce([engine,core](float dt){
+                starsContainer->scheduleOnce([engine,core,arr,this](float dt){
                     engine->relayout(core->dataSource);
                 }, .2*arr->count() > 10 ? 10 :.2*arr->count(), "pop");
             }
@@ -85,6 +93,8 @@ bool ClassicModelScence::init()
     };
     
     Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listenter, starsContainer);
+    
+    addChild(control);
     
     return true;
 }
