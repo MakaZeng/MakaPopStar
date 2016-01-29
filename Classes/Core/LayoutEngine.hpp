@@ -168,7 +168,7 @@ public:
                 
                 classicControl->appendScore(i*10+10);
                 
-            }, .2*i > 10 ? 10 :.2*i, __String::createWithFormat("random%d",i)->getCString());
+            }, .05*i > 10 ? 10 :.05*i, __String::createWithFormat("random%d",i)->getCString());
             
             removeNodeForModel(model);
         }

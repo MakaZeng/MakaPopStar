@@ -37,6 +37,8 @@ public:
     
     int level = 1;
     
+    long target = 1000;
+    
     // implement the "static create()" method manually
     CREATE_FUNC(ClassicModelScence);
     

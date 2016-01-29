@@ -89,7 +89,7 @@ bool ClassicModelScence::init()
                     starsContainer->scheduleOnce([this](float dt){
                         this->death(0,2);
                     }, 1, "remove");
-                }, .2*arr->count() > 10 ? 10 :.2*arr->count(), "pop");
+                }, .05*arr->count() > 4 ? 4 :.05*arr->count(), "pop");
             }
         }
         return false;
@@ -121,7 +121,13 @@ void ClassicModelScence::death(int lockOne,int lockTwo)
 
 void ClassicModelScence::nextLevel()
 {
+    level+=1;
+    
+    target = 1000+(level-1)*3000;
+    
     core->initStars();
     starsContainer->removeAllChildren();
     engine->layoutStarsWithDataSourceAndLayer(core->dataSource, starsContainer);
+    this->control->setLe(level);
+    this->control->setTarget(target);
 }
