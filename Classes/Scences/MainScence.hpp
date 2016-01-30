@@ -9,10 +9,8 @@
 #ifndef MainScence_hpp
 #define MainScence_hpp
 
-#include "cocos2d.h"
 #include <stdio.h>
-#include "CommonUtil.hpp"
-#include "ScreenUtil.hpp"
+#include "cocos2d.h"
 
 class MainScence : public cocos2d::Layer {
 public:
