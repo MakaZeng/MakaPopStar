@@ -14,13 +14,7 @@
 
 USING_NS_CC;
 
-
-class StarModel : public Ref {
-public:
-    int line;
-    int row;
-    int type;
-};
+class StarModel;
 
 class StarNode :public Ref {
 public:
@@ -29,42 +23,45 @@ public:
     Point targetCenter;
 };
 
+class StarModel : public Ref {
+public:
+    StarNode* node;
+    int line;
+    int row;
+    int type;
+};
+
 class RootEngine : public Ref {
 private:
     CCArray* dataSource;
     CCArray* checkedBlocks;
     CCArray* blocksInSameColor;
-    
+    CCArray* allNodes;
 public:
+    
     int lineCount = 10;
     int rowCount = 10;
     int typeCount = 5;
     
     float perWidth;
     float perHeight;
-    CCArray* allNodes;
     
     Layer* containerView;
     
-    CCArray* getSameColorStarsWithStar(StarModel * model);
-    void destroyStars(CCArray * stars);
-    StarModel* getModelForLineAndRow(int line,int row);
     void initStars();
+    void clickPoint(Point p);
+    CCArray* getSameColorStarsWithStar(StarModel * model);
+    void highLightedSeltectedArray(CCArray* array);
+    void destroySlectedArray(CCArray* array);
+    StarModel* getModelForLineAndRow(int line,int row);
     
 private:
     bool checkDeath();
-    void layoutStars();
     void checkFourSides(StarModel* model);
     void checkUp(StarModel* model);
     void checkDown(StarModel* model);
     void checkLeft(StarModel* model);
     void checkRight(StarModel* model);
-    void relayout(CCArray* dataSource);
-    void removeStars(CCArray* stars);
-    void removeNodeForModel(StarModel* model);
-    StarNode* getNodeForModel(StarModel* model);
-    Point getClickStarModelPointWith(Point p);
-    Sprite* getRelatedSpriteWith(StarModel* model);
 };
 
 #endif /* RootEngine_hpp */

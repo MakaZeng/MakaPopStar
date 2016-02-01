@@ -24,6 +24,11 @@ public:
     Layer* backgroundView;
     Layer* starContainerView;
     
+    virtual void onTouchesBegan(const std::vector<Touch*>& touches, Event *unused_event);
+    virtual void onTouchesMoved(const std::vector<Touch*>& touches, Event *unused_event);
+    virtual void onTouchesEnded(const std::vector<Touch*>& touches, Event *unused_event);
+    virtual void onTouchesCancelled(const std::vector<Touch*>&touches, Event *unused_event);
+    virtual void clickPoint(Point p);
 };
 
 #endif /* GamePlayRootScence_hpp */

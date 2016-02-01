@@ -10,14 +10,18 @@
 #define LaiziModeScence_hpp
 
 #include <stdio.h>
+#include "RootEngine.hpp"
 #include "GamePlayRootScence.hpp"
 
 USING_NS_CC;
 
 class LaiziModeScence : public GamePlayRootScence {
 public:
-    Scene* createScene();
+    CREATE_FUNC(LaiziModeScence);
+    static Scene* createScene();
     virtual bool init();
+    RootEngine* engine;
+    virtual void clickPoint(Point p);
 };
 
 #endif /* LaiziModeScence_hpp */

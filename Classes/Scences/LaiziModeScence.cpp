@@ -25,10 +25,19 @@ Scene* LaiziModeScence::createScene()
 
 bool LaiziModeScence::init()
 {
-    if ( !Layer::init() )
+    if ( !GamePlayRootScence::init() )
     {
         return false;
     }
     
+    engine = new RootEngine();
+    engine->containerView = this->starContainerView;
+    engine->initStars();
+    
     return true;
+}
+
+void LaiziModeScence::clickPoint(Point p)
+{
+    engine->clickPoint(p);
 }

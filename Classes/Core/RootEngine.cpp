@@ -21,6 +21,17 @@ void RootEngine::initStars()
     dataSource->retain();
     blocksInSameColor->retain();
     checkedBlocks->retain();
+    
+    Size contentSize = containerView->getContentSize();
+    perWidth = contentSize.width/lineCount;
+    perHeight = perWidth;
+    
+    CCArray* nameArray = CCArray::create();
+    for (int i = 0; i<5; i++) {
+        __String* s = __String::createWithFormat("image_0%d.png",i);
+        nameArray->addObject(s);
+    }
+    
     for (int i = 0; i<lineCount; i++) {
         CCArray* lineArray = CCArray::create();
         dataSource->addObject(lineArray);
@@ -31,9 +42,23 @@ void RootEngine::initStars()
             model->line = i;
             model->row = j;
             lineArray->addObject(model);
+            
+            __String* file = (__String*)nameArray->objectAtIndex(model->type);
+            Sprite* bSprite = Sprite::create(file->getCString());
+            bSprite->setPosition(Point((i+ 0.5)*this->perHeight, (j+0.5)*this->perWidth));
+            bSprite->setScale(CommonUtil::getScaleForTargetWithImage(perWidth, bSprite));
+            containerView->addChild(bSprite);
+            
+            StarNode* node = new StarNode();
+            node->sprite = bSprite;
+            node->model = model;
+            node->targetCenter = bSprite->getPosition();
+            model->node = node;
+            allNodes->addObject(node);
         }
     }
 }
+
 
 //获取点击ref周边相同颜色的ref
 CCArray* RootEngine::getSameColorStarsWithStar(StarModel * model)
@@ -48,22 +73,6 @@ CCArray* RootEngine::getSameColorStarsWithStar(StarModel * model)
     return blocksInSameColor;
 }
 
-//摧毁某些Stars
-void RootEngine::destroyStars(CCArray * stars)
-{
-    if (stars->count() == 0) {
-        return;
-    }
-    for(int i = 0 ; i< stars->count() ; i ++)
-    {
-        StarModel* model = (StarModel*)stars->objectAtIndex(i);
-        int line = model->line;
-        CCArray* rowArray = (CCArray*)dataSource->objectAtIndex(line);
-        rowArray->removeObject(model);
-    }
-    if (checkDeath()) {
-    }
-}
 
 //获取对应位置上的model
 StarModel* RootEngine::getModelForLineAndRow(int line,int row)
@@ -108,99 +117,42 @@ bool RootEngine::checkDeath()
     return true;
 }
 
-
-
-void RootEngine::layoutStars()
-{
-    Size contentSize = containerView->getContentSize();
-    perWidth = contentSize.width/15;
-    perHeight = perWidth;
-    
-    CCArray* nameArray = CCArray::create();
-    for (int i = 0; i<5; i++) {
-        __String* s = __String::createWithFormat("image_0%d.png",i);
-        nameArray->addObject(s);
-    }
-    
-    Size screenSize = ScreenUtil::getBestScreenSize();
-    
-    for (int i = 0; i<dataSource->count(); i++) {
-        for (int j = 0; j<((CCArray*)dataSource->objectAtIndex(i))->count(); j++) {
-            StarModel* model = (StarModel*)((CCArray*)dataSource->objectAtIndex(i))->objectAtIndex(j);
-            model->line = i;
-            model->row = j;
-            
-            __String* file = (__String*)nameArray->objectAtIndex(model->type);
-            Sprite* bSprite = Sprite::create(file->getCString());
-            bSprite->setPosition(Point((i+ 0.5)*this->perHeight, (j+0.5)*this->perWidth + screenSize.height));
-            bSprite->setScale(CommonUtil::getScaleForTargetWithImage(perWidth, bSprite));
-            containerView->addChild(bSprite);
-            
-            StarNode* node = new StarNode();
-            node->sprite = bSprite;
-            node->model = model;
-            node->targetCenter = bSprite->getPosition();
-            allNodes->addObject(node);
-        }
-    }
-}
-
-
-Point RootEngine::getClickStarModelPointWith(Point p)
+void RootEngine::clickPoint(Point p)
 {
     int row = p.y / this->perHeight;
     int line = p.x / this->perWidth;
-    
-    return Vec2(line, row);
-}
-
-Sprite* RootEngine::getRelatedSpriteWith(StarModel* model)
-{
-    for(int i = 0 ; i < allNodes->count() ; i ++)
-    {
-        StarNode* n = (StarNode*)allNodes->objectAtIndex(i);
-        if (n->model == model) {
-            return n->sprite;
-        }
-    }
-    return NULL;
-}
-
-StarNode* RootEngine::getNodeForModel(StarModel* model)
-{
-    for(int i = 0 ; i < allNodes->count() ; i ++)
-    {
-        StarNode* n = (StarNode*)allNodes->objectAtIndex(i);
-        if (n->model == model) {
-            return n;
-        }
-    }
-    return NULL;
-}
-
-void RootEngine::removeNodeForModel(StarModel* model)
-{
-    for(int i = 0 ; i < allNodes->count() ; i ++)
-    {
-        StarNode* n = (StarNode*)allNodes->objectAtIndex(i);
-        if (n->model == model) {
-            allNodes->removeObject(n);
-            return;
-        }
+    StarModel* model = this->getModelForLineAndRow(line, row);
+    CCArray* arr = blocksInSameColor;
+    if (!arr || arr->count() == 0) {
+        arr =  this->getSameColorStarsWithStar(model);
+        this->highLightedSeltectedArray(blocksInSameColor);
+    }else if (arr->containsObject(model)) {
+        this->destroySlectedArray(blocksInSameColor);
+        blocksInSameColor->removeAllObjects();
+    }else {
+        arr =  this->getSameColorStarsWithStar(model);
+        this->highLightedSeltectedArray(blocksInSameColor);
     }
 }
 
-void RootEngine::removeStars(CCArray* stars)
+void RootEngine::highLightedSeltectedArray(CCArray* array)
 {
+}
+
+void RootEngine::destroySlectedArray(CCArray* array)
+{
+    if (array->count() == 0) {
+        return;
+    }
     containerView->unscheduleAllCallbacks();
-    for(int i = 0 ; i < stars->count() ; i ++)
+    for(int i = 0 ; i< array->count() ; i ++)
     {
-        StarModel* model = (StarModel*)stars->objectAtIndex(i);
-        Sprite* sp = getRelatedSpriteWith(model);
-        
-        
+        StarModel* model = (StarModel*)array->objectAtIndex(i);
+        int line = model->line;
+        CCArray* rowArray = (CCArray*)dataSource->objectAtIndex(line);
+        rowArray->removeObject(model);
+        Sprite* sp = model->node->sprite;
         containerView->scheduleOnce([sp,i,this](float dt){
-            
             if (sp->isRunning()==false) {
                 return ;
             }
@@ -220,49 +172,43 @@ void RootEngine::removeStars(CCArray* stars)
             CommonUtil::createLabelMoveTo(f, t, __String::createWithFormat("%d",i*10+10),containerView);
             
         }, .05*i > 10 ? 10 :.05*i, __String::createWithFormat("random%d",i)->getCString());
-        
-        removeNodeForModel(model);
-    }
-}
-
-void RootEngine::relayout(CCArray* dataSource)
-{
-    CCArray* emptyArray = CCArray::create();
-    
-    for (int i = 0; i<dataSource->count(); i++) {
-        CCArray* arr = (CCArray*)dataSource->objectAtIndex(i);
-        
-        if (arr->count() == 0) {
-            emptyArray->addObject(arr);
-        }
     }
     
-    dataSource->removeObjectsInArray(emptyArray);
-    
-    for (int i = 0; i<dataSource->count(); i++) {
-        for (int j = 0; j<((CCArray*)dataSource->objectAtIndex(i))->count(); j++) {
-            StarModel* model = (StarModel*)((CCArray*)dataSource->objectAtIndex(i))->objectAtIndex(j);
+    containerView->scheduleOnce([array,this](float dt){
+        CCArray* emptyArray = CCArray::create();
+        
+        for (int i = 0; i<dataSource->count(); i++) {
+            CCArray* arr = (CCArray*)dataSource->objectAtIndex(i);
             
-            model->line = i;
-            model->row = j;
-            
-            StarNode* node = getNodeForModel(model);
-            
-            Point p = node->sprite->getPosition();
-            Point t = ccp((i+ 0.5)*this->perHeight, (j+0.5)*this->perWidth);
-            
-            if (p.x != t.x || p.y != t.y) {
-                CCActionInterval * moveBy = CCMoveBy::create(0.3,Vec2(t.x-p.x, t.y-p.y));
-                CCActionInterval * actionmoveback= moveBy;
-                node->sprite->runAction(actionmoveback);
-                allNodes->addObject(node);
+            if (arr->count() == 0) {
+                emptyArray->addObject(arr);
             }
-            
         }
-    }
-    
-}
+        
+        dataSource->removeObjectsInArray(emptyArray);
+        
+        for (int i = 0; i<dataSource->count(); i++) {
+            for (int j = 0; j<((CCArray*)dataSource->objectAtIndex(i))->count(); j++) {
+                StarModel* model = (StarModel*)((CCArray*)dataSource->objectAtIndex(i))->objectAtIndex(j);
+                model->line = i;
+                model->row = j;
+                StarNode* node = model->node;
+                Point p = node->sprite->getPosition();
+                Point t = ccp((i+ 0.5)*this->perHeight, (j+0.5)*this->perWidth);
+                if (p.x != t.x || p.y != t.y) {
+                    CCActionInterval * moveBy = CCMoveBy::create(0.3,Vec2(t.x-p.x, t.y-p.y));
+                    CCActionInterval * actionmoveback= moveBy;
+                    node->sprite->runAction(actionmoveback);
+                    allNodes->addObject(node);
+                }
+            }
+        }
+    }, .05*array->count() > 10 ? 10 :array->count()*.05, "relayout");
 
+    
+    if (checkDeath()) {
+    }
+}
 
 
 //判断上下左右
