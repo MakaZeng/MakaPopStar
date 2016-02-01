@@ -30,7 +30,7 @@ bool LaiziModeScence::init()
         return false;
     }
     
-    engine = new RootEngine();
+    engine = new LaiziEngine();
     engine->containerView = this->starContainerView;
     engine->initStars();
     

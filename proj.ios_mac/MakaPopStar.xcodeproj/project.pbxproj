@@ -65,6 +65,8 @@
 		607FF6591C5C59B100CACFCE /* GamePlayRootScence.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 607FF6561C5C59B100CACFCE /* GamePlayRootScence.cpp */; };
 		607FF6601C5C675600CACFCE /* RootEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 607FF65E1C5C675600CACFCE /* RootEngine.cpp */; };
 		607FF6611C5C675600CACFCE /* RootEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 607FF65E1C5C675600CACFCE /* RootEngine.cpp */; };
+		60C556581C5F38DF00D07F2B /* LaiziEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60C556561C5F38DF00D07F2B /* LaiziEngine.cpp */; };
+		60C556591C5F38DF00D07F2B /* LaiziEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60C556561C5F38DF00D07F2B /* LaiziEngine.cpp */; };
 		60F972FD1C5A55B5005A38E7 /* white_image_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 60F972FC1C5A55B5005A38E7 /* white_image_background.png */; };
 		60F972FE1C5A55B5005A38E7 /* white_image_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 60F972FC1C5A55B5005A38E7 /* white_image_background.png */; };
 		60F973011C5A7421005A38E7 /* image_04_s.png in Resources */ = {isa = PBXBuildFile; fileRef = 60F972FF1C5A7421005A38E7 /* image_04_s.png */; };
@@ -200,6 +202,8 @@
 		607FF6571C5C59B100CACFCE /* GamePlayRootScence.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GamePlayRootScence.hpp; sourceTree = "<group>"; };
 		607FF65E1C5C675600CACFCE /* RootEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RootEngine.cpp; sourceTree = "<group>"; };
 		607FF65F1C5C675600CACFCE /* RootEngine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RootEngine.hpp; sourceTree = "<group>"; };
+		60C556561C5F38DF00D07F2B /* LaiziEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LaiziEngine.cpp; sourceTree = "<group>"; };
+		60C556571C5F38DF00D07F2B /* LaiziEngine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LaiziEngine.hpp; sourceTree = "<group>"; };
 		60F972FC1C5A55B5005A38E7 /* white_image_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_image_background.png; sourceTree = "<group>"; };
 		60F972FF1C5A7421005A38E7 /* image_04_s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_04_s.png; sourceTree = "<group>"; };
 		60F973001C5A7421005A38E7 /* image_04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_04.png; sourceTree = "<group>"; };
@@ -490,6 +494,8 @@
 		607FF6551C5BDB6A00CACFCE /* LaiziMode */ = {
 			isa = PBXGroup;
 			children = (
+				60C556561C5F38DF00D07F2B /* LaiziEngine.cpp */,
+				60C556571C5F38DF00D07F2B /* LaiziEngine.hpp */,
 			);
 			path = LaiziMode;
 			sourceTree = "<group>";
@@ -697,6 +703,7 @@
 				24711B8C1C59F47D00BB6001 /* MainScence.cpp in Sources */,
 				607FF6601C5C675600CACFCE /* RootEngine.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
+				60C556581C5F38DF00D07F2B /* LaiziEngine.cpp in Sources */,
 				607FF6581C5C59B100CACFCE /* GamePlayRootScence.cpp in Sources */,
 				24711B901C59F47D00BB6001 /* ScreenUtil.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
@@ -709,6 +716,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FF6611C5C675600CACFCE /* RootEngine.cpp in Sources */,
+				60C556591C5F38DF00D07F2B /* LaiziEngine.cpp in Sources */,
 				607FF6591C5C59B100CACFCE /* GamePlayRootScence.cpp in Sources */,
 				607FF6541C5BDA2F00CACFCE /* LaiziModeScence.cpp in Sources */,
 				24711B8F1C59F47D00BB6001 /* CommonUtil.cpp in Sources */,

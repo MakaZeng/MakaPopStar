@@ -32,12 +32,14 @@ public:
 };
 
 class RootEngine : public Ref {
-private:
+
+public:
+    
     CCArray* dataSource;
     CCArray* checkedBlocks;
     CCArray* blocksInSameColor;
     CCArray* allNodes;
-public:
+
     
     int lineCount = 10;
     int rowCount = 10;
@@ -55,13 +57,12 @@ public:
     void destroySlectedArray(CCArray* array);
     StarModel* getModelForLineAndRow(int line,int row);
     
-private:
     bool checkDeath();
     void checkFourSides(StarModel* model);
-    void checkUp(StarModel* model);
-    void checkDown(StarModel* model);
-    void checkLeft(StarModel* model);
-    void checkRight(StarModel* model);
+    virtual void checkUp(StarModel* model);
+    virtual void checkDown(StarModel* model);
+    virtual void checkLeft(StarModel* model);
+    virtual void checkRight(StarModel* model);
 };
 
 #endif /* RootEngine_hpp */
