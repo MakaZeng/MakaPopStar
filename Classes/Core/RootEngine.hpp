@@ -11,6 +11,9 @@
 
 #include <stdio.h>
 #include "cocos2d.h"
+#include "ScreenUtil.hpp"
+#include "CommonUtil.hpp"
+
 
 USING_NS_CC;
 
@@ -39,12 +42,14 @@ public:
     CCArray* checkedBlocks;
     CCArray* blocksInSameColor;
     CCArray* allNodes;
+    
+    makaCompleteCallback completeCallback;
 
     
-    int lineCount = 10;
-    int rowCount = 10;
-    int typeCount = 5;
-    
+    int lineCount = 20;
+    int rowCount = 15;
+    int typeCount = 20;
+
     float perWidth;
     float perHeight;
     
@@ -54,7 +59,8 @@ public:
     void clickPoint(Point p);
     CCArray* getSameColorStarsWithStar(StarModel * model);
     void highLightedSeltectedArray(CCArray* array);
-    void destroySlectedArray(CCArray* array);
+    void deHighLightedSelectedArray(CCArray* array);
+    void destroySlectedArray(CCArray* array, makaCompleteCallback complete);
     StarModel* getModelForLineAndRow(int line,int row);
     
     bool checkDeath();
@@ -63,6 +69,10 @@ public:
     virtual void checkDown(StarModel* model);
     virtual void checkLeft(StarModel* model);
     virtual void checkRight(StarModel* model);
+    
+    virtual void death();
+    void clearStars();
+    
 };
 
 #endif /* RootEngine_hpp */

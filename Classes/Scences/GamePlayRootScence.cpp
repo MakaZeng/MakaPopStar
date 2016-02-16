@@ -15,15 +15,17 @@ bool GamePlayRootScence::init()
         return false;
     }
     
+    CommonUtil::getTailImageSpriteWithImageName(__String::create("img_gray_background.png"), this , false);
+    
     Size contentSize = ScreenUtil::getBestScreenSize();
     
     starContainerView = Layer::create();
     
-    float padding = 10;
+    float padding = 400;
     
     starContainerView->setContentSize(Size(contentSize.width - padding , contentSize.height - padding));
     starContainerView->setAnchorPoint(Point(0,0));
-    starContainerView->setPosition(Point(padding/2,padding/2));
+    starContainerView->setPosition(Point(padding/2,padding/4));
     addChild(starContainerView);
     
     
@@ -49,7 +51,7 @@ void GamePlayRootScence::onTouchesBegan(const std::vector<Touch*>& touches, coco
         auto pos1 = touch->getLocation();
         auto pos2 = touch->getLocationInView();
         auto pos3 = Director::getInstance()->convertToUI(pos2);
-        this->clickPoint(pos1);
+        this->clickPoint(Point(pos1));
     }
 }
 

@@ -3,9 +3,8 @@
   <SolutionFolder>
     <Group ctype="ResourceGroup">
       <RootFolder Name=".">
-        <Image Name="mainScence_Logo.png" />
-        <Project Name="MainScene.csd" Type="Scene" />
-        <Image Name="sky.jpg" />
+        <Image Name="iPad_back.png" />
+        <Project Name="MainScence.csd" Type="Scene" />
       </RootFolder>
     </Group>
   </SolutionFolder>

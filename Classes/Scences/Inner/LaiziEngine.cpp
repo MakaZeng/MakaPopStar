@@ -16,7 +16,7 @@ void LaiziEngine::initStars()
 
 void LaiziEngine::checkUp(StarModel* model) {
     StarModel* blockUpside = getModelForLineAndRow(model->line+1, model->row);
-    if (blockUpside ==NULL || (blockUpside->type != model->type && model->type != 1)) {
+    if (blockUpside ==NULL || (blockUpside->type != model->type)) {
         return;
     }
     if (!blocksInSameColor->containsObject(blockUpside)) {
@@ -27,7 +27,7 @@ void LaiziEngine::checkUp(StarModel* model) {
 
 void LaiziEngine::checkDown(StarModel* model){
     StarModel* blockDownside = getModelForLineAndRow(model->line-1, model->row);
-    if (blockDownside ==NULL || (blockDownside->type != model->type && model->type != 1)){
+    if (blockDownside ==NULL || (blockDownside->type != model->type)){
         return;
     }
     if (!blocksInSameColor->containsObject(blockDownside)) {
@@ -38,7 +38,7 @@ void LaiziEngine::checkDown(StarModel* model){
 
 void LaiziEngine::checkLeft(StarModel* model){
     StarModel* blockLeftside = getModelForLineAndRow(model->line, model->row-1);
-    if (blockLeftside ==NULL || (blockLeftside->type != model->type && model->type != 1)) {
+    if (blockLeftside ==NULL || (blockLeftside->type != model->type)) {
         return;
     }
     if (!blocksInSameColor->containsObject(blockLeftside)) {
@@ -49,7 +49,7 @@ void LaiziEngine::checkLeft(StarModel* model){
 
 void LaiziEngine::checkRight(StarModel* model){
     StarModel* blockRightside = getModelForLineAndRow(model->line, model->row+1);
-    if (blockRightside ==NULL || (blockRightside->type != model->type && model->type != 1)) {
+    if (blockRightside ==NULL || (blockRightside->type != model->type)) {
         return;
     }
     if (!blocksInSameColor->containsObject(blockRightside)) {

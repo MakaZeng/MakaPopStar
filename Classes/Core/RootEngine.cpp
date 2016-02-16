@@ -7,9 +7,6 @@
 //
 
 #include "RootEngine.hpp"
-#include "ScreenUtil.hpp"
-#include "CommonUtil.hpp"
-
 //初始化矩阵数据
 void RootEngine::initStars()
 {
@@ -27,8 +24,8 @@ void RootEngine::initStars()
     perHeight = perWidth;
     
     CCArray* nameArray = CCArray::create();
-    for (int i = 0; i<5; i++) {
-        __String* s = __String::createWithFormat("image_0%d.png",i);
+    for (int i = 0; i<typeCount; i++) {
+        __String* s = __String::createWithFormat("img_star_%02d.png",i);
         nameArray->addObject(s);
     }
     
@@ -93,6 +90,9 @@ StarModel* RootEngine::getModelForLineAndRow(int line,int row)
 //判断游戏结束
 bool RootEngine::checkDeath()
 {
+    if (allNodes->count()==0) {
+        return true;
+    }
     for (int i = 0; i<dataSource->count(); i++) {
         for (int j = 0; j<((CCArray*)dataSource->objectAtIndex(i))->count(); j++) {
             StarModel* model = (StarModel*)((CCArray*)dataSource->objectAtIndex(i))->objectAtIndex(j);
@@ -119,17 +119,18 @@ bool RootEngine::checkDeath()
 
 void RootEngine::clickPoint(Point p)
 {
-    int row = p.y / this->perHeight;
-    int line = p.x / this->perWidth;
+    int row = (p.y - containerView->getPosition().y) / this->perHeight;
+    int line = (p.x - containerView->getPosition().x) / this->perWidth;
     StarModel* model = this->getModelForLineAndRow(line, row);
     CCArray* arr = blocksInSameColor;
     if (!arr || arr->count() == 0) {
         arr =  this->getSameColorStarsWithStar(model);
         this->highLightedSeltectedArray(blocksInSameColor);
     }else if (arr->containsObject(model)) {
-        this->destroySlectedArray(blocksInSameColor);
+        this->destroySlectedArray(blocksInSameColor,NULL);
         blocksInSameColor->removeAllObjects();
     }else {
+        this->deHighLightedSelectedArray(blocksInSameColor);
         arr =  this->getSameColorStarsWithStar(model);
         this->highLightedSeltectedArray(blocksInSameColor);
     }
@@ -137,13 +138,37 @@ void RootEngine::clickPoint(Point p)
 
 void RootEngine::highLightedSeltectedArray(CCArray* array)
 {
+    for (int i = 0; i < array->count(); i++) {
+        StarModel* model = (StarModel*)array->objectAtIndex(i);
+        StarNode* node = model->node;
+        int type = model->type;
+        __String* s = __String::createWithFormat("img_star_%02d_selected.png",type);
+        node->sprite->setTexture(s->getCString());
+    }
 }
 
-void RootEngine::destroySlectedArray(CCArray* array)
+void RootEngine::deHighLightedSelectedArray(CCArray* array)
+{
+    for (int i = 0; i < array->count(); i++) {
+        StarModel* model = (StarModel*)array->objectAtIndex(i);
+        StarNode* node = model->node;
+        int type = model->type;
+        __String* s = __String::createWithFormat("img_star_%02d.png",type);
+        node->sprite->setTexture(s->getCString());
+    }
+}
+
+void RootEngine::destroySlectedArray(CCArray *array, makaCompleteCallback complete)
 {
     if (array->count() == 0) {
+        if (complete) {
+            complete();
+        }
         return;
     }
+    
+    completeCallback = complete;
+    
     containerView->unscheduleAllCallbacks();
     for(int i = 0 ; i< array->count() ; i ++)
     {
@@ -151,6 +176,8 @@ void RootEngine::destroySlectedArray(CCArray* array)
         int line = model->line;
         CCArray* rowArray = (CCArray*)dataSource->objectAtIndex(line);
         rowArray->removeObject(model);
+        allNodes->removeObject(model->node);
+        
         Sprite* sp = model->node->sprite;
         containerView->scheduleOnce([sp,i,this](float dt){
             if (sp->isRunning()==false) {
@@ -163,7 +190,7 @@ void RootEngine::destroySlectedArray(CCArray* array)
             containerView->addChild(ps);
             
             sp->removeFromParent();
-            if (i<=50) {
+            if (i<=40) {
                 CommonUtil::playSoundWithName(__String::create("pop"),0.8,0.8+i/16.0>1.5?1.5:0.8+i/16.0);
             }
             
@@ -171,7 +198,7 @@ void RootEngine::destroySlectedArray(CCArray* array)
             Point t = Point(containerView->getContentSize().width/2,containerView->getContentSize().height - 100);
             CommonUtil::createLabelMoveTo(f, t, __String::createWithFormat("%d",i*10+10),containerView);
             
-        }, .05*i > 10 ? 10 :.05*i, __String::createWithFormat("random%d",i)->getCString());
+        }, .1*i > 4 ? 4 :.1*i, __String::createWithFormat("random%d",i)->getCString());
     }
     
     containerView->scheduleOnce([array,this](float dt){
@@ -199,15 +226,35 @@ void RootEngine::destroySlectedArray(CCArray* array)
                     CCActionInterval * moveBy = CCMoveBy::create(0.3,Vec2(t.x-p.x, t.y-p.y));
                     CCActionInterval * actionmoveback= moveBy;
                     node->sprite->runAction(actionmoveback);
-                    allNodes->addObject(node);
                 }
             }
         }
-    }, .05*array->count() > 10 ? 10 :array->count()*.05, "relayout");
+        
+        containerView->scheduleOnce([this](float dt){
+            if (completeCallback) {
+                completeCallback();
+            }else{
+                if (checkDeath()) {
+                    death();
+                }
+            }
+        }, 0.4, "delayClear");
+        
+    }, .1*array->count() > 4 ? 4 :array->count()*.1, "relayout");
+}
 
+void RootEngine::death()
+{
     
-    if (checkDeath()) {
-    }
+}
+
+void RootEngine::clearStars()
+{
+//    containerView->removeAllChildren();
+//    dataSource->removeAllObjects();
+//    blocksInSameColor->removeAllObjects();
+//    allNodes->removeAllObjects();
+//    checkedBlocks->removeAllObjects();
 }
 
 

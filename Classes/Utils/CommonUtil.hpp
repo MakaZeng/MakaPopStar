@@ -21,6 +21,11 @@
 #include "SimpleAudioEngine.h"
 #include "cocos-ext.h"
 
+#define FONT_NAME "Verdana"
+#define FONT_SIZE 28
+
+#define TOP_TOOLBAR_HEIGHT 80
+
 using namespace CocosDenshion;
 USING_NS_CC;
 using namespace cocos2d::ui;
@@ -44,7 +49,7 @@ public:
         p6->setSpeedVar(20);
         
         p6->setStartSize(size);
-        p6->setStartSizeVar(5);
+        p6->setStartSizeVar(50);
         p6->setEndSize(5);
         p6->setEndSizeVar(2);
         
@@ -58,6 +63,55 @@ public:
         
         return p6;
     }
+    
+    static inline void getTailImageSpriteWithImageName(__String* s , Layer* layer , bool random)
+    {
+        
+        Size contentSize = layer->getContentSize();
+        
+        Sprite* image ;
+        
+        if (random) {
+            image = Sprite::create(__String::createWithFormat("%s_0.png",s->getCString())->getCString());
+        }else {
+            image = Sprite::create(s->getCString());
+        }
+        
+        Size imageSize = image->getTextureRect().size;
+        
+        Sprite* sp;
+        
+        int tailLine = contentSize.width/imageSize.width+1;
+        int tailRow = contentSize.height/imageSize.height+1;
+        
+        float totalWidth = tailLine*imageSize.width;
+        float totalHeight = tailRow*imageSize.height;
+        
+        float leftPadding = (totalWidth-contentSize.width)/2;
+        float bottomPadding = (totalHeight-contentSize.height)/2;
+        
+        for(int i=0;i<tailLine;i++)
+        {
+            for(int j=0;j<tailRow;j++)
+            {
+                if (random) {
+                    sp = Sprite::create(__String::createWithFormat("%s_%d.png",s->getCString(),((int)(CCRANDOM_0_1()*100))%7)->getCString());
+                }else {
+                    sp = Sprite::create(s->getCString());
+                }
+                
+                sp->setAnchorPoint(Point(0,0));
+                sp->setPosition(Point(imageSize.width*i - leftPadding,imageSize.height*j - bottomPadding));
+                if(i%2==0)
+                {
+                    sp->setFlippedX(true);
+                }
+                layer->addChild(sp);
+            }
+        }    
+        return;
+    }
+    
     static inline Sprite* getBackSpriteForImageNameAndLayer(__String* imageName , Layer* layer)
     {
         Size contentSize = layer->getContentSize();
@@ -79,6 +133,8 @@ public:
         }else {
             scale = contentSize.width/textureSize.width;
         }
+        
+        scale = 1;
 
         backImage->setScaleX(scale);
         backImage->setScaleY(scale);

@@ -14,6 +14,8 @@
 
 USING_NS_CC;
 
+typedef std::function<void(void)> makaCompleteCallback;
+
 class ScreenUtil : public cocos2d::Ref {
 public:
     static inline Size getBestScreenSize()

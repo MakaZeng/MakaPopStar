@@ -1,7 +1,7 @@
 #include "AppDelegate.h"
 #include "MainScence.hpp"
 #include "ScreenUtil.hpp"
-#include "LaiziModeScence.hpp"
+#include "ClassicModeScence.hpp"
 
 USING_NS_CC;
 
@@ -47,7 +47,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     FileUtils::getInstance()->addSearchPath("res");
 
     // create a scene. it's an autorelease object
-    auto scene = LaiziModeScence::createScene();
+    auto scene = ClassicModeScence::createScene();
 
     // run
     director->runWithScene(scene);

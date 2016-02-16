@@ -37,6 +37,14 @@ bool MainScence::init()
         return false;
     }
     
+    
+    CommonUtil::getTailImageSpriteWithImageName(__String::create("img_background"), this ,true);
+    
+    
+    Sprite* sp = Sprite::create("img_home.png");
+    sp->setAnchorPoint(Point(0,0));
+    addChild(sp);
+    
     this->scheduleUpdate();
     
     return true;
@@ -44,9 +52,5 @@ bool MainScence::init()
 
 void MainScence::update(float dt)
 {
-    Size contentSize = this->getContentSize();
-    __String* pointer = __String::create("star.png");
-    ParticleSystem* s = CommonUtil::getParticleSystemForImageNameAndLayer(pointer);
-    s->setPosition(rand()%(int)contentSize.width,rand()%(int)contentSize.height);
-    addChild(s);
+
 }
