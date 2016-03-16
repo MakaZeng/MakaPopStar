@@ -38,12 +38,14 @@ bool MainScence::init()
     }
     
     
-    CommonUtil::getTailImageSpriteWithImageName(__String::create("img_background"), this ,true);
+    Sprite* b = CommonUtil::getBackSpriteForImageNameAndLayer(__String::create("iPad_MainScence_Background.jpg"), this);
     
     
-    Sprite* sp = Sprite::create("img_home.png");
+    this->addChild(b);
+    
+    Sprite* sp = Sprite::create("iPad_Button_back.png");
     sp->setAnchorPoint(Point(0,0));
-    addChild(sp);
+    this->addChild(sp);
     
     this->scheduleUpdate();
     
